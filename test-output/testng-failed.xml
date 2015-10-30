@@ -5,8 +5,9 @@
     <classes>
       <class name="com.epam.test.LoginTest">
         <methods>
-          <include name="before"/>
+          <include name="beforeClass"/>
           <include name="testLogin"/>
+          <include name="afterClass"/>
         </methods>
       </class> <!-- com.epam.test.LoginTest -->
     </classes>

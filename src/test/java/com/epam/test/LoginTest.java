@@ -41,13 +41,18 @@ public class LoginTest {
 		//Typing password and starting inbon messages page
 		InboxMessagesPage inboxMessagesPage = passwordPage.setPasswordAndSubmit(user.getPassword());
 		
+		inboxMessagesPage.getMessages().get(0).getIndicatedCheckBox().click();
+		inboxMessagesPage.getMessages().get(1).getIndicatedCheckBox().click();
+		inboxMessagesPage.getMessages().get(2).getIndicatedCheckBox().click();
+		
+		inboxMessagesPage.submitImportantMessages();
 		
 	}
 	
 	@AfterClass
 	public static void afterClass () {
 		//Stop browser driver
-		WebDriverUtils.stop();
+//		WebDriverUtils.stop();
 	}
 
 }
