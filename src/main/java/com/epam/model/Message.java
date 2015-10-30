@@ -9,15 +9,20 @@ import org.openqa.selenium.WebElement;
 public class Message {
 
 	private static final String INDICATED_CHECK_BOX_CLASS_NAME = "oZ-jc";
+	private static final String IMPORTANT_CHECK_BOX_CLASS_NAME = "WA";
 
 	private WebElement indicatedCheckBox;
+	private WebElement importantCheckBox;
 
 	private String sender;
 	private String subject;
 
 	public Message(WebElement message) {
 		super();
+		//
 		indicatedCheckBox = message.findElement(By.className(INDICATED_CHECK_BOX_CLASS_NAME));
+		//
+		importantCheckBox = message.findElement(By.className(IMPORTANT_CHECK_BOX_CLASS_NAME));
 
 		// try {
 		sender = message.findElement(By.className("yX")).getText();
@@ -35,6 +40,10 @@ public class Message {
 
 	public void setIndicatedCheckBox(WebElement indicatedCheckBox) {
 		this.indicatedCheckBox = indicatedCheckBox;
+	}
+	
+	public WebElement getImportantCheckBox() {
+		return importantCheckBox;
 	}
 
 	public String getSender() {

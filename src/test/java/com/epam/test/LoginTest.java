@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import com.epam.engine.WebDriverUtils;
 import com.epam.model.User;
+import com.epam.page.ImportantMessagesPage;
 import com.epam.page.InboxMessagesPage;
 import com.epam.page.LoginPage;
 import com.epam.page.PasswordPage;
@@ -41,11 +42,11 @@ public class LoginTest {
 		//Typing password and starting inbon messages page
 		InboxMessagesPage inboxMessagesPage = passwordPage.setPasswordAndSubmit(user.getPassword());
 		
-		inboxMessagesPage.getMessages().get(0).getIndicatedCheckBox().click();
-		inboxMessagesPage.getMessages().get(1).getIndicatedCheckBox().click();
-		inboxMessagesPage.getMessages().get(2).getIndicatedCheckBox().click();
+		inboxMessagesPage.getMessages().get(0).getImportantCheckBox().click();
+		inboxMessagesPage.getMessages().get(1).getImportantCheckBox().click();
+		inboxMessagesPage.getMessages().get(2).getImportantCheckBox().click();
 		
-		inboxMessagesPage.submitImportantMessages();
+		ImportantMessagesPage importantMessagesPage = inboxMessagesPage.openImportantMessagesPage();
 		
 	}
 	
