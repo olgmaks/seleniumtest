@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="45350" started-at="2015-10-31T12:44:18Z" finished-at="2015-10-31T12:45:03Z">
+  <suite name="Default suite" duration-ms="50160" started-at="2015-10-31T14:25:23Z" finished-at="2015-10-31T14:26:13Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="45350" started-at="2015-10-31T12:44:18Z" finished-at="2015-10-31T12:45:03Z">
+    <test name="Default test" duration-ms="50160" started-at="2015-10-31T14:25:23Z" finished-at="2015-10-31T14:26:13Z">
       <class name="com.epam.test.LoginTest">
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.epam.test.LoginTest@3cb1ffe6]" name="beforeClass" is-config="true" duration-ms="9972" started-at="2015-10-31T14:44:18Z" finished-at="2015-10-31T14:44:28Z">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.epam.test.LoginTest@3cb1ffe6]" name="beforeClass" is-config="true" duration-ms="12087" started-at="2015-10-31T16:25:23Z" finished-at="2015-10-31T16:25:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="testLogin()[pri:0, instance:com.epam.test.LoginTest@3cb1ffe6]" name="testLogin" duration-ms="35357" started-at="2015-10-31T14:44:28Z" finished-at="2015-10-31T14:45:03Z">
+        <test-method status="PASS" signature="testScenario()[pri:0, instance:com.epam.test.LoginTest@3cb1ffe6]" name="testScenario" duration-ms="36495" started-at="2015-10-31T16:25:35Z" finished-at="2015-10-31T16:26:12Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testLogin -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.epam.test.LoginTest@3cb1ffe6]" name="afterClass" is-config="true" duration-ms="0" started-at="2015-10-31T14:45:03Z" finished-at="2015-10-31T14:45:03Z">
+        </test-method> <!-- testScenario -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.epam.test.LoginTest@3cb1ffe6]" name="afterClass" is-config="true" duration-ms="1555" started-at="2015-10-31T16:26:12Z" finished-at="2015-10-31T16:26:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->

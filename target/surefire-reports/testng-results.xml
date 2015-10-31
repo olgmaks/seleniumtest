@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Surefire suite" duration-ms="31789" started-at="2015-10-31T08:59:21Z" finished-at="2015-10-31T08:59:52Z">
+  <suite name="Surefire suite" duration-ms="51777" started-at="2015-10-31T14:29:38Z" finished-at="2015-10-31T14:30:30Z">
     <groups>
     </groups>
-    <test name="Surefire test" duration-ms="31789" started-at="2015-10-31T08:59:21Z" finished-at="2015-10-31T08:59:52Z">
-      <class name="com.epam.test.LoginTest">
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.epam.test.LoginTest@87f383f]" name="beforeClass" is-config="true" duration-ms="14101" started-at="2015-10-31T10:59:21Z" finished-at="2015-10-31T10:59:35Z">
+    <test name="Surefire test" duration-ms="51777" started-at="2015-10-31T14:29:38Z" finished-at="2015-10-31T14:30:30Z">
+      <class name="com.epam.test.SeleniumScenarioTest">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.epam.test.SeleniumScenarioTest@87f383f]" name="beforeClass" is-config="true" duration-ms="14842" started-at="2015-10-31T16:29:38Z" finished-at="2015-10-31T16:29:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="testLogin()[pri:0, instance:com.epam.test.LoginTest@87f383f]" name="testLogin" duration-ms="17673" started-at="2015-10-31T10:59:35Z" finished-at="2015-10-31T10:59:52Z">
+        <test-method status="PASS" signature="testScenario()[pri:0, instance:com.epam.test.SeleniumScenarioTest@87f383f]" name="testScenario" duration-ms="35327" started-at="2015-10-31T16:29:53Z" finished-at="2015-10-31T16:30:29Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testLogin -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.epam.test.LoginTest@87f383f]" name="afterClass" is-config="true" duration-ms="0" started-at="2015-10-31T10:59:52Z" finished-at="2015-10-31T10:59:52Z">
+        </test-method> <!-- testScenario -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.epam.test.SeleniumScenarioTest@87f383f]" name="afterClass" is-config="true" duration-ms="1596" started-at="2015-10-31T16:30:29Z" finished-at="2015-10-31T16:30:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-      </class> <!-- com.epam.test.LoginTest -->
+      </class> <!-- com.epam.test.SeleniumScenarioTest -->
     </test> <!-- Surefire test -->
   </suite> <!-- Surefire suite -->
 </testng-results>

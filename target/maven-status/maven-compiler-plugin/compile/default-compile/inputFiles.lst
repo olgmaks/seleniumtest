@@ -6,5 +6,6 @@ e:\IT\workspace-mars\seleniumtest.git\src\main\java\com\epam\page\TrashMessagesP
 e:\IT\workspace-mars\seleniumtest.git\src\main\java\com\epam\page\PasswordPage.java
 e:\IT\workspace-mars\seleniumtest.git\src\main\java\com\epam\testdata\Data.java
 e:\IT\workspace-mars\seleniumtest.git\src\main\java\com\epam\model\Message.java
+e:\IT\workspace-mars\seleniumtest.git\src\main\java\com\epam\page\BasePage.java
 e:\IT\workspace-mars\seleniumtest.git\src\main\java\com\epam\encode\StringHelper.java
 e:\IT\workspace-mars\seleniumtest.git\src\main\java\com\epam\engine\WebDriverUtils.java
