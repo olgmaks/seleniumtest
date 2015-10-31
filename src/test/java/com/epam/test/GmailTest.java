@@ -22,9 +22,9 @@ import com.epam.page.PasswordPage;
 import com.epam.page.TrashMessagesPage;
 import com.epam.testdata.Data;
 
-public class SeleniumScenarioTest {
+public class GmailTest {
 
-	private static final Logger LOG = Logger.getLogger(SeleniumScenarioTest.class);
+	private static final Logger LOG = Logger.getLogger(GmailTest.class);
 
 	@BeforeClass
 	public static void beforeClass() {
@@ -35,6 +35,7 @@ public class SeleniumScenarioTest {
 
 	@Test
 	public void testScenario() {
+
 		LOG.info("Test execution has been started");
 
 		// Loading default user for test from property file
@@ -77,9 +78,9 @@ public class SeleniumScenarioTest {
 		Message thirdImportantMessage = importantMessages.get(2);
 
 		// Verifying indicated messages presence among important messages
-		assertEquals(firstMessage, firstImportantMessage);
-		assertEquals(secondMessage, secondImportantMessage);
-		assertEquals(thirdMessage, thirdImportantMessage);
+		assertEquals(importantMessages.contains(firstMessage), true);
+		assertEquals(importantMessages.contains(secondMessage), true);
+		assertEquals(importantMessages.contains(thirdMessage), true);
 		LOG.info("Messages have been found in important box");
 
 		// Indicating messages as important
@@ -102,9 +103,9 @@ public class SeleniumScenarioTest {
 		Message thirdTrashMessage = trashMessages.get(2);
 
 		// Verifying trash messages
-		assertEquals(firstImportantMessage, firstTrashMessage);
-		assertEquals(secondImportantMessage, secondTrashMessage);
-		assertEquals(thirdImportantMessage, thirdTrashMessage);
+		assertEquals(trashMessages.contains(firstImportantMessage), true);
+		assertEquals(trashMessages.contains(secondImportantMessage), true);
+		assertEquals(trashMessages.contains(thirdImportantMessage), true);
 		LOG.info("Messages have been found in trashed messages");
 
 		// Returning system to previous state
@@ -121,7 +122,7 @@ public class SeleniumScenarioTest {
 		Action action = new Actions(WebDriverUtils.getDriver())
 				.clickAndHold(WebDriverUtils.getDriver().findElement(By.id(":cc"))).release().build();
 		action.perform();
-		LOG.info("System has been returned to previous state");
+		LOG.info("System has been returned to pre-contition state");
 		LOG.info("Test has been passed");
 	}
 
