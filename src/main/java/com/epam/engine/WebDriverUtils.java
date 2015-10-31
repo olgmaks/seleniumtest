@@ -42,6 +42,15 @@ public class WebDriverUtils {
 		}
 		driver = null;
 	}
+	
+	public static void webDriverWait(long seconds) {
+		try {
+			TimeUnit.SECONDS.sleep(seconds);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public static void load(String path) {
 		getDriver().get(path);

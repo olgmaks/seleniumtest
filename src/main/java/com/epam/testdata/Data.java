@@ -9,7 +9,8 @@ import com.epam.model.User;
 
 public class Data {
 
-	public static final String URL = "https://accounts.google.com/ServiceLogin?sacu=1&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&hl=uk&service=mail#identifier";
+	public static final String URL = 
+			"https://accounts.google.com/ServiceLogin?sacu=1&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&hl=uk&service=mail#identifier";
 	
 	private static final String PATH_TO_PROPERTIES = "src/main/resources/testdata.properties";
 	
