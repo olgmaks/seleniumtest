@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Surefire suite" duration-ms="56112" started-at="2015-11-01T10:25:46Z" finished-at="2015-11-01T10:26:42Z">
+  <suite name="Surefire suite" duration-ms="49573" started-at="2015-11-01T15:13:24Z" finished-at="2015-11-01T15:14:14Z">
     <groups>
     </groups>
-    <test name="Surefire test" duration-ms="56112" started-at="2015-11-01T10:25:46Z" finished-at="2015-11-01T10:26:42Z">
+    <test name="Surefire test" duration-ms="49573" started-at="2015-11-01T15:13:24Z" finished-at="2015-11-01T15:14:14Z">
       <class name="com.epam.test.GmailTest">
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.epam.test.GmailTest@87f383f]" name="beforeClass" is-config="true" duration-ms="14169" started-at="2015-11-01T12:25:46Z" finished-at="2015-11-01T12:26:00Z">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.epam.test.GmailTest@87f383f]" name="beforeClass" is-config="true" duration-ms="10621" started-at="2015-11-01T17:13:24Z" finished-at="2015-11-01T17:13:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="testScenario()[pri:0, instance:com.epam.test.GmailTest@87f383f]" name="testScenario" duration-ms="40381" started-at="2015-11-01T12:26:00Z" finished-at="2015-11-01T12:26:40Z">
+        <test-method status="PASS" signature="testScenario()[pri:0, instance:com.epam.test.GmailTest@87f383f]" name="testScenario" duration-ms="37845" started-at="2015-11-01T17:13:35Z" finished-at="2015-11-01T17:14:12Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testScenario -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.epam.test.GmailTest@87f383f]" name="afterClass" is-config="true" duration-ms="1541" started-at="2015-11-01T12:26:40Z" finished-at="2015-11-01T12:26:42Z">
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.epam.test.GmailTest@87f383f]" name="afterClass" is-config="true" duration-ms="1091" started-at="2015-11-01T17:14:12Z" finished-at="2015-11-01T17:14:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
