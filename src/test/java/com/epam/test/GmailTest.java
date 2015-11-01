@@ -117,11 +117,8 @@ public class GmailTest {
 		secondTrashMessage.getIndicatedCheckBox().click();
 		thirdTrashMessage.getIndicatedCheckBox().click();
 
-		WebDriverUtils.getDriver().findElement(By.id(":as")).click();
-
-		Action action = new Actions(WebDriverUtils.getDriver())
-				.clickAndHold(WebDriverUtils.getDriver().findElement(By.id(":cc"))).release().build();
-		action.perform();
+		trashMessagesPage.clickSendToInbox();
+		
 		LOG.info("System has been returned to pre-contition state");
 		LOG.info("Test has been passed");
 	}
