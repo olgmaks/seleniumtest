@@ -8,13 +8,14 @@
 		</layout>
 	</appender>
 	<appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="file" value="C:/logs/journal.log" />
+		<param name="file" value="C:/logs/SeleniumGmailTest.log" />
 		<param name="Append" value="true" />
 		<param name="Encoding" value="UTF-8" />
 		<param name="Threshold" value="info" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="[%t] %d{HH:mm:ss,SSS} %-5p %l - %m%n" />
+			<param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
+			<!--<param name="ConversionPattern" value="[%t] %d{HH:mm:ss,SSS} %-5p %l - %m%n" />-->
 		</layout>
 	</appender>
 	<appender name="FILEERRORS" class="org.apache.log4j.DailyRollingFileAppender">
@@ -42,5 +43,6 @@
 	<root>
 		<priority value="info" />
 		<appender-ref ref="console" />
+		<appender-ref ref="FILE" />
 	</root>
 </log4j:configuration>
