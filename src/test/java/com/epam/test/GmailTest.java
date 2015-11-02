@@ -42,11 +42,11 @@ public class GmailTest {
 		LoginPage loginPage = new LoginPage();
 		LOG.info("Login Page page has been opened");
 
-		// Typing email, submiting and starting password page
+		// Typing email, submitting and starting password page
 		PasswordPage passwordPage = loginPage.setEmailAndSubmit(user.getEmail());
 		LOG.info("Password Page has been opened");
 
-		// Typing password and starting inbon messages page
+		// Typing password and starting inbox messages page
 		InboxMessagesPage inboxMessagesPage = passwordPage.setPasswordAndSubmit(user.getPassword());
 		LOG.info("Inbox Messages Page has been opened");
 

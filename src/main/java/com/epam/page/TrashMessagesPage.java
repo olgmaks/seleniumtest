@@ -6,13 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
-import com.epam.model.Message;
+import com.epam.transformer.MessageTransformer;
 
 public class TrashMessagesPage extends BasePage {
 
 	@Override
 	protected void initMessages() {
-		messages = Message.toMessages(driver.findElements(By.className("UI")).get(2).findElements(By.className("zA")));
+		messages = MessageTransformer
+				.fetchAll(driver.findElements(By.className("UI")).get(2).findElements(By.className("zA")));
 	}
 
 	public void clickSendToInbox() {

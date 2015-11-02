@@ -9,10 +9,11 @@ import org.openqa.selenium.WebElement;
 
 import com.epam.engine.WebDriverUtils;
 import com.epam.model.Message;
+import com.epam.transformer.MessageTransformer;
 
 public class BasePage {
 
-//	private static final Logger LOG = Logger.getLogger(BasePage.class);
+	// private static final Logger LOG = Logger.getLogger(BasePage.class);
 
 	protected WebDriver driver;
 	protected WebElement moreOptionsButton;
@@ -27,13 +28,13 @@ public class BasePage {
 		WebDriverUtils.webDriverWait(5);
 
 		moreOptionsButton = driver.findElement(By.className("n6"));
-		
+
 		initMessages();
 
 	}
 
 	protected void initMessages() {
-		messages = Message.toMessages(driver.findElements(By.className("zA")));
+		messages = MessageTransformer.fetchAll(driver.findElements(By.className("zA")));
 
 	}
 
@@ -55,8 +56,8 @@ public class BasePage {
 				"document.getElementsByClassName('r9gPwb')[0].getElementsByClassName('n3')[1].getElementsByClassName('GLujEb')[0].click();");
 		return new ImportantMessagesPage();
 	}
-	
-	public void deleteCheckedMessages () {
+
+	public void deleteCheckedMessages() {
 		deleteCheckedButton = driver.findElements(By.className("ar9")).get(1);
 		deleteCheckedButton.click();
 	}

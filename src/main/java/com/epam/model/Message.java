@@ -1,37 +1,19 @@
 package com.epam.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class Message {
 
-	private static final String INDICATED_CHECK_BOX_CLASS_NAME = "oZ-jc";
-	private static final String IMPORTANT_CHECK_BOX_CLASS_NAME = "WA";
-
 	private WebElement indicatedCheckBox;
+
 	private WebElement importantCheckBox;
 
 	private String sender;
+
 	private String subject;
 
-	public Message(WebElement message) {
-		super();
-		//
-		indicatedCheckBox = message.findElement(By.className(INDICATED_CHECK_BOX_CLASS_NAME));
-		//
-		importantCheckBox = message.findElement(By.className(IMPORTANT_CHECK_BOX_CLASS_NAME));
-
-		// try {
-		sender = message.findElement(By.className("yX")).getText();
-
-		// } catch (UnsupportedEncodingException e) {
-		// e.printStackTrace();
-		// }
-		subject = message.findElement(By.className("xS")).findElement(By.className("y6")).getText();
-		// messageText = message.findElement(By.className("y2")).getText();
+	public Message() {
+ 
 	}
 
 	public WebElement getIndicatedCheckBox() {
@@ -41,7 +23,11 @@ public class Message {
 	public void setIndicatedCheckBox(WebElement indicatedCheckBox) {
 		this.indicatedCheckBox = indicatedCheckBox;
 	}
-	
+
+	public void setImportantCheckBox(WebElement importantCheckBox) {
+		this.importantCheckBox = importantCheckBox;
+	}
+
 	public WebElement getImportantCheckBox() {
 		return importantCheckBox;
 	}
@@ -60,23 +46,6 @@ public class Message {
 
 	public void setSubject(String subject) {
 		this.subject = subject;
-	}
-
-	public static List<Message> toMessages(List<WebElement> elements) {
-
-		if (elements == null) {
-			System.out.println(Message.class + "Message : " + "toMessages : elements = null");
-			return null;
-		}
-
-		List<Message> results = new ArrayList<>();
-
-		for (WebElement webElement : elements) {
-			Message message = new Message(webElement);
-			results.add(message);
-		}
-
-		return results;
 	}
 
 	@Override
@@ -115,6 +84,4 @@ public class Message {
 		return true;
 	}
 
-	
-	
 }
