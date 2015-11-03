@@ -13,11 +13,14 @@ import com.epam.transformer.MessageTransformer;
 
 public class BasePage {
 
-	// private static final Logger LOG = Logger.getLogger(BasePage.class);
+	private static final String DELETE_CHECKED_MESSAGES_BUTTON_XPATH = "//div[@gh='tm']//div[@act='10']";
+	private static final String MORE_MENU_OPTIONS_BUTTON_XPATH = "//span[@class='ait']";
+	private static final String IMPORTANT_MESSAGES_BUTTON_XPATH = "//div[@class='r9gPwb bQ']/div[3]/div[1]/div[1]/div[1]/div[1]";
 
 	protected WebDriver driver;
 	protected WebElement moreOptionsButton;
 	protected WebElement deleteCheckedButton;
+	protected WebElement trashMessagesButton;
 
 	protected List<Message> messages;
 
@@ -27,7 +30,7 @@ public class BasePage {
 
 		WebDriverUtils.webDriverWait(5);
 
-		moreOptionsButton = driver.findElement(By.className("n6"));
+		moreOptionsButton = driver.findElement(By.xpath(MORE_MENU_OPTIONS_BUTTON_XPATH));
 
 		initMessages();
 
@@ -52,13 +55,19 @@ public class BasePage {
 	// Important
 	public ImportantMessagesPage openImportantMessagesPage() {
 
-		((JavascriptExecutor) driver).executeScript(
-				"document.getElementsByClassName('r9gPwb')[0].getElementsByClassName('n3')[1].getElementsByClassName('GLujEb')[0].click();");
+		moreOptionsButton.click();
+
+		WebElement importantMessagesButton = driver.findElement(By.xpath(IMPORTANT_MESSAGES_BUTTON_XPATH));
+
+		importantMessagesButton.click();
+
 		return new ImportantMessagesPage();
 	}
 
 	public void deleteCheckedMessages() {
-		deleteCheckedButton = driver.findElements(By.className("ar9")).get(1);
+
+		deleteCheckedButton = driver.findElement(By.xpath(DELETE_CHECKED_MESSAGES_BUTTON_XPATH));
+
 		deleteCheckedButton.click();
 	}
 

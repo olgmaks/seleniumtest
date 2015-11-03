@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -22,6 +23,8 @@ import com.epam.testdata.Data;
 public class GmailTest {
 
 	private static final Logger LOG = Logger.getLogger(GmailTest.class);
+
+	private TrashMessagesPage trashMessagesPage;
 
 	@BeforeClass
 	public static void beforeClass() {
@@ -90,40 +93,50 @@ public class GmailTest {
 
 		// Opening trash messages page
 		TrashMessagesPage trashMessagesPage = importantMessagesPage.openTrashMessagesPage();
+		this.trashMessagesPage = trashMessagesPage;
 		LOG.info("Trash Messages Page page has been opened");
 
 		// Trash messages
 		List<Message> trashMessages = trashMessagesPage.getMessages();
 
-		Message firstTrashMessage = trashMessages.get(0);
-		Message secondTrashMessage = trashMessages.get(1);
-		Message thirdTrashMessage = trashMessages.get(2);
-
+		
 		// Verifying trash messages
 		assertEquals(trashMessages.contains(firstImportantMessage), true);
 		assertEquals(trashMessages.contains(secondImportantMessage), true);
 		assertEquals(trashMessages.contains(thirdImportantMessage), true);
+		
 		LOG.info("Messages have been found in trashed messages");
 
-		// Returning system to previous state
-		firstTrashMessage.getImportantCheckBox().click();
-		secondTrashMessage.getImportantCheckBox().click();
-		thirdTrashMessage.getImportantCheckBox().click();
-
-		firstTrashMessage.getIndicatedCheckBox().click();
-		secondTrashMessage.getIndicatedCheckBox().click();
-		thirdTrashMessage.getIndicatedCheckBox().click();
-
-		trashMessagesPage.clickSendToInbox();
-		
-		LOG.info("System has been returned to pre-contition state");
 		LOG.info("Test has been passed");
+	}
+
+	@AfterMethod
+	public void afterTest() {
+
+		if (trashMessagesPage == null) {
+			return;
+		}
+		
+		// Returning system to previous state
+		
+		for (Message message : trashMessagesPage.getMessages()) {
+			message.getImportantCheckBox().click();
+		}
+
+		for (Message message : trashMessagesPage.getMessages()) {
+			message.getIndicatedCheckBox().click();
+		}
+		
+		trashMessagesPage.clickSendToInbox();
+
+		LOG.info("System has been returned to pre-contition state");
+
 	}
 
 	@AfterClass
 	public static void afterClass() {
 		// Stop browser driver
-		WebDriverUtils.stop();
+		// WebDriverUtils.stop();
 		LOG.info("Browser has been stopped");
 	}
 
