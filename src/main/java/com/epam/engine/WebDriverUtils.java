@@ -3,6 +3,10 @@ package com.epam.engine;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.google.common.base.Predicate;
 
 public class WebDriverUtils {
 	
@@ -43,13 +47,8 @@ public class WebDriverUtils {
 		driver = null;
 	}
 	
-	public static void webDriverWait(long seconds) {
-		try {
-			TimeUnit.SECONDS.sleep(seconds);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public static WebDriverWait createWebDriverWait(long seconds) {
+		  return new WebDriverWait(driver, seconds);
 	}
 
 	public static void load(String path) {

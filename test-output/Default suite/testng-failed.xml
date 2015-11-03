@@ -8,6 +8,7 @@
           <include name="beforeClass"/>
           <include name="testScenario"/>
           <include name="afterClass"/>
+          <include name="afterTest"/>
         </methods>
       </class> <!-- com.epam.test.GmailTest -->
     </classes>

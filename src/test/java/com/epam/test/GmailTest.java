@@ -18,6 +18,7 @@ import com.epam.page.InboxMessagesPage;
 import com.epam.page.LoginPage;
 import com.epam.page.PasswordPage;
 import com.epam.page.TrashMessagesPage;
+import com.epam.service.LoginService;
 import com.epam.testdata.Data;
 
 public class GmailTest {
@@ -36,21 +37,17 @@ public class GmailTest {
 	@Test
 	public void testScenario() {
 
+		
 		LOG.info("Test execution has been started");
-
+		
 		// Loading default user for test from property file
 		User user = Data.getDefaultUser();
-
-		// Loading page
-		LoginPage loginPage = new LoginPage();
-		LOG.info("Login Page page has been opened");
-
-		// Typing email, submitting and starting password page
-		PasswordPage passwordPage = loginPage.setEmailAndSubmit(user.getEmail());
-		LOG.info("Password Page has been opened");
-
-		// Typing password and starting inbox messages page
-		InboxMessagesPage inboxMessagesPage = passwordPage.setPasswordAndSubmit(user.getPassword());
+		
+		// Login service
+		LoginService loginService = new LoginService();
+		
+		// 
+		InboxMessagesPage inboxMessagesPage = loginService.login(user);
 		LOG.info("Inbox Messages Page has been opened");
 
 		// Preparing Messages to be indicated as important
@@ -99,12 +96,11 @@ public class GmailTest {
 		// Trash messages
 		List<Message> trashMessages = trashMessagesPage.getMessages();
 
-		
 		// Verifying trash messages
 		assertEquals(trashMessages.contains(firstImportantMessage), true);
 		assertEquals(trashMessages.contains(secondImportantMessage), true);
 		assertEquals(trashMessages.contains(thirdImportantMessage), true);
-		
+
 		LOG.info("Messages have been found in trashed messages");
 
 		LOG.info("Test has been passed");
@@ -116,9 +112,9 @@ public class GmailTest {
 		if (trashMessagesPage == null) {
 			return;
 		}
-		
+
 		// Returning system to previous state
-		
+
 		for (Message message : trashMessagesPage.getMessages()) {
 			message.getImportantCheckBox().click();
 		}
@@ -126,7 +122,7 @@ public class GmailTest {
 		for (Message message : trashMessagesPage.getMessages()) {
 			message.getIndicatedCheckBox().click();
 		}
-		
+
 		trashMessagesPage.clickSendToInbox();
 
 		LOG.info("System has been returned to pre-contition state");
@@ -135,8 +131,8 @@ public class GmailTest {
 
 	@AfterClass
 	public static void afterClass() {
-		// Stop browser driver
-		// WebDriverUtils.stop();
+//		 Stop browser driver
+		 WebDriverUtils.stop();
 		LOG.info("Browser has been stopped");
 	}
 

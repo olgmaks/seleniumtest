@@ -12,6 +12,7 @@ public class Message {
 
 	private String subject;
 
+	
 	public Message() {
  
 	}

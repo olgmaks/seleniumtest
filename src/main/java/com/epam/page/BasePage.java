@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.epam.engine.WebDriverUtils;
 import com.epam.model.Message;
@@ -28,9 +29,9 @@ public class BasePage {
 
 		driver = WebDriverUtils.getDriver();
 
-		WebDriverUtils.webDriverWait(5);
-
 		moreOptionsButton = driver.findElement(By.xpath(MORE_MENU_OPTIONS_BUTTON_XPATH));
+
+		WebDriverUtils.createWebDriverWait(5).until(ExpectedConditions.visibilityOf(moreOptionsButton));
 
 		initMessages();
 

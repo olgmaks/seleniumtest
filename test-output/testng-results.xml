@@ -1,25 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="25983" started-at="2015-11-03T12:04:22Z" finished-at="2015-11-03T12:04:48Z">
+  <suite name="Default suite" duration-ms="15318" started-at="2015-11-03T15:10:56Z" finished-at="2015-11-03T15:11:11Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="25983" started-at="2015-11-03T12:04:22Z" finished-at="2015-11-03T12:04:48Z">
+    <test name="Default test" duration-ms="15318" started-at="2015-11-03T15:10:56Z" finished-at="2015-11-03T15:11:11Z">
       <class name="com.epam.test.GmailTest">
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.epam.test.GmailTest@69a3d1d]" name="beforeClass" is-config="true" duration-ms="4808" started-at="2015-11-03T14:04:22Z" finished-at="2015-11-03T14:04:26Z">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.epam.test.GmailTest@69a3d1d]" name="beforeClass" is-config="true" duration-ms="6003" started-at="2015-11-03T17:10:56Z" finished-at="2015-11-03T17:11:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="testScenario()[pri:0, instance:com.epam.test.GmailTest@69a3d1d]" name="testScenario" duration-ms="20471" started-at="2015-11-03T14:04:26Z" finished-at="2015-11-03T14:04:47Z">
+        <test-method status="FAIL" signature="testScenario()[pri:0, instance:com.epam.test.GmailTest@69a3d1d]" name="testScenario" duration-ms="9296" started-at="2015-11-03T17:11:02Z" finished-at="2015-11-03T17:11:11Z">
+          <exception class="org.openqa.selenium.StaleElementReferenceException">
+            <message>
+              <![CDATA[Element is no longer attached to the DOM
+Command duration or timeout: 70 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '2.48.2', revision: '41bccdd10cf2c0560f637404c2d96164b67d9d67', time: '2015-10-09 13:08:06'
+System info: host: 'EPUALVIW1172', ip: '10.25.10.228', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_65'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=41.0.2, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 5c0e2f61-dd09-4102-aa2c-bb7ecf41e385
+*** Element info: {Using=class name, value=y6}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.StaleElementReferenceException: Element is no longer attached to the DOM
+Command duration or timeout: 70 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '2.48.2', revision: '41bccdd10cf2c0560f637404c2d96164b67d9d67', time: '2015-10-09 13:08:06'
+System info: host: 'EPUALVIW1172', ip: '10.25.10.228', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_65'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=41.0.2, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 5c0e2f61-dd09-4102-aa2c-bb7ecf41e385
+*** Element info: {Using=class name, value=y6}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:197)
+	at org.openqa.selenium.remote.RemoteWebElement.findElementByClassName(RemoteWebElement.java:271)
+	at org.openqa.selenium.By$ByClassName.findElement(By.java:391)
+	at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:193)
+	at com.epam.transformer.MessageTransformer.fetchOne(MessageTransformer.java:31)
+	at com.epam.transformer.MessageTransformer.fetchAll(MessageTransformer.java:46)
+	at com.epam.page.TrashMessagesPage.initMessages(TrashMessagesPage.java:18)
+	at com.epam.page.BasePage.<init>(BasePage.java:36)
+	at com.epam.page.TrashMessagesPage.<init>(TrashMessagesPage.java:10)
+	at com.epam.page.BasePage.openTrashMessagesPage(BasePage.java:53)
+	at com.epam.test.GmailTest.testScenario(GmailTest.java:95)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:774)
+	at org.testng.TestRunner.run(TestRunner.java:624)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.run(TestNG.java:1048)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:112)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
+Caused by: org.openqa.selenium.StaleElementReferenceException: Element is no longer attached to the DOM
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
+Build info: version: '2.48.2', revision: '41bccdd10cf2c0560f637404c2d96164b67d9d67', time: '2015-10-09 13:08:06'
+System info: host: 'EPUALVIW1172', ip: '10.25.10.228', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_65'
+Driver info: driver.version: unknown
+	at <anonymous class>.fxdriver.cache.getElementAt(resource://fxdriver/modules/web-element-cache.js:9354)
+	at <anonymous class>.Utils.getElementAt(file:///C:/Users/OLEH_M~1/AppData/Local/Temp/anonymous5377297526716509327webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:8978)
+	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/OLEH_M~1/AppData/Local/Temp/anonymous5377297526716509327webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10649)
+	at <anonymous class>.FirefoxDriver.prototype.findChildElement(file:///C:/Users/OLEH_M~1/AppData/Local/Temp/anonymous5377297526716509327webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10671)
+	at <anonymous class>.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/OLEH_M~1/AppData/Local/Temp/anonymous5377297526716509327webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at <anonymous class>.DelayedCommand.prototype.executeInternal_(file:///C:/Users/OLEH_M~1/AppData/Local/Temp/anonymous5377297526716509327webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at <anonymous class>.DelayedCommand.prototype.execute/<(file:///C:/Users/OLEH_M~1/AppData/Local/Temp/anonymous5377297526716509327webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.StaleElementReferenceException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testScenario -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:com.epam.test.GmailTest@69a3d1d]" name="afterTest" is-config="true" duration-ms="695" started-at="2015-11-03T14:04:47Z" finished-at="2015-11-03T14:04:48Z">
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:com.epam.test.GmailTest@69a3d1d]" name="afterTest" is-config="true" duration-ms="1" started-at="2015-11-03T17:11:11Z" finished-at="2015-11-03T17:11:11Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.epam.test.GmailTest@69a3d1d]" name="afterClass" is-config="true" duration-ms="0" started-at="2015-11-03T14:04:48Z" finished-at="2015-11-03T14:04:48Z">
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.epam.test.GmailTest@69a3d1d]" name="afterClass" is-config="true" duration-ms="0" started-at="2015-11-03T17:11:11Z" finished-at="2015-11-03T17:11:11Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
