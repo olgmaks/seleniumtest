@@ -1,11 +1,13 @@
 package com.epam.test;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 import java.util.List;
 
 import org.apache.log4j.Logger;
+
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -75,9 +77,9 @@ public class GmailTest {
 		Message thirdImportantMessage = importantMessages.get(2);
 
 		// Verifying indicated messages presence among important messages
-		assertEquals(importantMessages.contains(firstMessage), true);
-		assertEquals(importantMessages.contains(secondMessage), true);
-		assertEquals(importantMessages.contains(thirdMessage), true);
+		assertTrue(importantMessages.contains(firstMessage));
+		assertTrue(importantMessages.contains(secondMessage));
+		assertTrue(importantMessages.contains(thirdMessage));
 		LOG.info("Messages have been found in important box");
 
 		// Indicating messages as important
@@ -100,9 +102,10 @@ public class GmailTest {
 		Message thirdTrashMessage = trashMessages.get(2);
 
 		// Verifying trash messages
-		assertEquals(trashMessages.contains(firstImportantMessage), true);
-		assertEquals(trashMessages.contains(secondImportantMessage), true);
-		assertEquals(trashMessages.contains(thirdImportantMessage), true);
+		assertTrue(trashMessages.contains(firstImportantMessage));
+		assertTrue(trashMessages.contains(secondImportantMessage));
+		assertTrue(trashMessages.contains(thirdImportantMessage));
+
 		LOG.info("Messages have been found in trashed messages");
 
 		// Returning system to previous state
@@ -115,9 +118,13 @@ public class GmailTest {
 		thirdTrashMessage.getIndicatedCheckBox().click();
 
 		trashMessagesPage.clickSendToInbox();
-		
+
 		LOG.info("System has been returned to pre-contition state");
 		LOG.info("Test has been passed");
+	}
+
+	@AfterMethod
+	public void afterGmailTestScenario() {
 	}
 
 	@AfterClass
