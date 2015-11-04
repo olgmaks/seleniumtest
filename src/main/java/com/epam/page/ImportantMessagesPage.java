@@ -10,7 +10,7 @@ public class ImportantMessagesPage extends BasePage {
 
 	@Override
 	protected void initMessages() {
-		messages = MessageTransformer
+		messageElements = MessageTransformer
 				.fetchAll(driver.findElements(By.xpath(IMPORTANT_MESSAGES_XPATH)));
 	}
 

@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.epam.model.Message;
-import com.epam.page.MessageItemFragment;
+import com.epam.pagecomponent.MessageElement;
 
 public class MessageTransformer {
 
@@ -19,9 +19,9 @@ public class MessageTransformer {
 
 	}
 
-	public static MessageItemFragment fetchOne(WebElement message) {
+	public static MessageElement fetchOne(WebElement message) {
 
-		MessageItemFragment result = new MessageItemFragment();
+		MessageElement result = new MessageElement();
 		Message messageModel = new Message();
 
 		result.setIndicatedCheckBox(message.findElement(By.className(INDICATED_CHECK_BOX_CLASS_NAME)));
@@ -41,21 +41,36 @@ public class MessageTransformer {
 		return result;
 	}
 
-	public static List<MessageItemFragment> fetchAll(List<WebElement> elements) {
+	public static List<MessageElement> fetchAll(List<WebElement> elements) {
 		
 		if (elements == null) {
 			System.out.println(Message.class + "Message : " + "toMessages : elements = null");
 			return null;
 		}
 
-		List<MessageItemFragment> results = new ArrayList<>();
+		List<MessageElement> results = new ArrayList<>();
 
 		for (WebElement webElement : elements) {
-			MessageItemFragment messageItemFragment = fetchOne(webElement);
+			MessageElement messageItemFragment = fetchOne(webElement);
 			results.add(messageItemFragment);
 		}
 
 		return results;
+	}
+	
+	public static Message getOneMessage (MessageElement messageItemFragment) {
+		return messageItemFragment.getMessage();
+	}
+	
+	public static List<Message> getAllMessages (List<MessageElement> messageItemFragments) {
+		
+		List<Message> result = new ArrayList<>();
+		
+		for (MessageElement messageItemFragment : messageItemFragments) {
+			result.add(getOneMessage(messageItemFragment));
+		}
+		
+		return result;
 	}
 
 }

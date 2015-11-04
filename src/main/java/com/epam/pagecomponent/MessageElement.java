@@ -1,10 +1,10 @@
-package com.epam.page;
+package com.epam.pagecomponent;
 
 import org.openqa.selenium.WebElement;
 
 import com.epam.model.Message;
 
-public class MessageItemFragment {
+public class MessageElement {
 	
 	
 	private Message message;
@@ -14,7 +14,7 @@ public class MessageItemFragment {
 	private WebElement importantCheckBox; 
 	
 	
-	public MessageItemFragment() {
+	public MessageElement() {
 		 
 	}
 
@@ -73,7 +73,7 @@ public class MessageItemFragment {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MessageItemFragment other = (MessageItemFragment) obj;
+		MessageElement other = (MessageElement) obj;
 		if (message == null) {
 			if (other.message != null)
 				return false;

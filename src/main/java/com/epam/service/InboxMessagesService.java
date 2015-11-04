@@ -1,46 +1,60 @@
 package com.epam.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.epam.model.Message;
 import com.epam.model.User;
 import com.epam.page.InboxMessagesPage;
-import com.epam.page.MessageItemFragment;
 
-public class InboxMessagesService {
+public class InboxMessagesService extends BaseService {
 
+	// Services
 	private LoginService loginService;
 
+	// Pages
 	private InboxMessagesPage inboxMessagesPage;
 
 	public InboxMessagesService(User user) {
-		LoginService loginService = new LoginService(user);
-		this.loginService = loginService;
+		loginService = new LoginService(user);
+		initInbox();
+
 	}
 
 	public InboxMessagesService(LoginService loginService) {
 		this.loginService = loginService;
+		initInbox();
 	}
 
-	public InboxMessagesService indicateMessagesAsImportant(Integer... messagesNumbers) {
-
-		List<Message> result = new ArrayList<>();
-
+	private void initInbox() {
 		inboxMessagesPage = loginService.login().getInboxMessagesPage();
+	}
 
-		List<MessageItemFragment> messages = inboxMessagesPage.getMessages();
+	@Override
+	protected void initMessages() {
+		messages = inboxMessagesPage.getMessages();
+	}
 
-		for (Integer index : messagesNumbers) {
-			
-			if (!messages.get(index).getMessage().getImportant()) {
-				inboxMessagesPage.indicateMessageAsImportant(index);
-			}
-			
-			result.add(messages.get(index).getMessage());
-		}
+	@Override
+	public List<Message> indicateMessagesAsImportant(Integer... messagesIndexes) {
+		return Services.indicateMessagesAsImportant(inboxMessagesPage, messagesIndexes);
+	}
 
-		return this;
+	@Override
+	public List<Message> indicateMessagesAsSelected(Integer... messagesIndexes) {
+		return Services.indicateMessagesAsSelected(inboxMessagesPage, messagesIndexes);
+	}
+
+	@Override
+	public Boolean verifyMessagesPresence(List<Message> expectedMessages) {
+		return Services.verifyMessagesPresence(inboxMessagesPage, expectedMessages);
+	}
+
+	public InboxMessagesPage getInboxMessagesPage() {
+		return inboxMessagesPage;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
 	}
 
 }

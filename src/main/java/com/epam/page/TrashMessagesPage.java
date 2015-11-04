@@ -15,7 +15,7 @@ public class TrashMessagesPage extends BasePage {
 
 	@Override
 	protected void initMessages() {
-		messages = MessageTransformer.fetchAll(driver.findElements(By.xpath(TRASH_MESSAGES_XPATH)));
+		messageElements = MessageTransformer.fetchAll(driver.findElements(By.xpath(TRASH_MESSAGES_XPATH)));
 	}
 
 	public void clickSendToInbox() {

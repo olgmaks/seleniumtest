@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.epam.engine.WebDriverUtils;
+import com.epam.model.Message;
+import com.epam.pagecomponent.MessageElement;
 import com.epam.transformer.MessageTransformer;
 
 public class BasePage {
@@ -22,7 +24,8 @@ public class BasePage {
 	protected WebElement deleteCheckedButton;
 	protected WebElement trashMessagesButton;
 
-	protected List<MessageItemFragment> messages;
+	protected List<MessageElement> messageElements;
+	protected List<Message> modelMessages;
 
 	protected BasePage() {
 
@@ -40,16 +43,16 @@ public class BasePage {
 	}
 
 	protected void initMessages() {
-		messages = MessageTransformer.fetchAll(driver.findElements(By.className("zA")));
+		messageElements = MessageTransformer.fetchAll(driver.findElements(By.className("zA")));
 
 	}
 	
 	public void indicateMessageAsImportant (Integer index) {
-		messages.get(index).getImportantCheckBox().click();
+		messageElements.get(index).getImportantCheckBox().click();
 	}
 	
 	public void indicateMessageAsSelected (Integer index) {
-		messages.get(index).getIndicatedCheckBox().click();
+		messageElements.get(index).getIndicatedCheckBox().click();
 	}
 
 	// Trash
@@ -82,7 +85,12 @@ public class BasePage {
 		deleteCheckedButton.click();
 	}
 
-	public List<MessageItemFragment> getMessages() {
-		return messages;
+	public List<MessageElement> getMessageElements() {
+		return messageElements;
+	}
+	
+	public List<Message> getMessages () {
+		
+		return MessageTransformer.getAllMessages(messageElements);
 	}
 }
