@@ -2,32 +2,37 @@ package com.epam.model;
 
 public class Message {
 
-	private Boolean indicated;
 
-	private Boolean important;
+
+	private boolean isIndicated;
+
+	private boolean isImportant;
 
 	private String sender;
 
 	private String subject;
 
+
+
 	public Message() {
 
 	}
 
-	public Boolean getImportant() {
-		return important;
+
+	public boolean isIndicated() {
+		return isIndicated;
 	}
 
-	public Boolean getIndicated() {
-		return indicated;
+	public void setIndicated(boolean isIndicated) {
+		this.isIndicated = isIndicated;
 	}
 
-	public void setImportant(Boolean important) {
-		this.important = important;
+	public boolean isImportant() {
+		return isImportant;
 	}
 
-	public void setIndicated(Boolean indicated) {
-		this.indicated = indicated;
+	public void setImportant(boolean isImportant) {
+		this.isImportant = isImportant;
 	}
 
 	public String getSender() {
@@ -47,39 +52,36 @@ public class Message {
 	}
 
 	@Override
-	public String toString() {
-		return "Message [sender=" + sender + ", subject=" + subject + "]";
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Message message = (Message) o;
+
+		if (isImportant != message.isImportant) return false;
+		if (isIndicated != message.isIndicated) return false;
+		if (sender != null ? !sender.equals(message.sender) : message.sender != null) return false;
+		if (subject != null ? !subject.equals(message.subject) : message.subject != null) return false;
+
+		return true;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((sender == null) ? 0 : sender.hashCode());
-		result = prime * result + ((subject == null) ? 0 : subject.hashCode());
+		int result = (isIndicated ? 1 : 0);
+		result = 31 * result + (isImportant ? 1 : 0);
+		result = 31 * result + (sender != null ? sender.hashCode() : 0);
+		result = 31 * result + (subject != null ? subject.hashCode() : 0);
 		return result;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Message other = (Message) obj;
-		if (sender == null) {
-			if (other.sender != null)
-				return false;
-		} else if (!sender.equals(other.sender))
-			return false;
-		if (subject == null) {
-			if (other.subject != null)
-				return false;
-		} else if (!subject.equals(other.subject))
-			return false;
-		return true;
+	public String toString() {
+		return "Message{" +
+				"isIndicated=" + isIndicated +
+				", isImportant=" + isImportant +
+				", sender='" + sender + '\'' +
+				", subject='" + subject + '\'' +
+				'}';
 	}
-
 }

@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.epam.model.Message;
-import com.epam.pagecomponent.MessageElement;
+import com.epam.page.MessageElement;
 
 public class MessageTransformer {
 

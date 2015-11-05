@@ -7,16 +7,16 @@ import org.openqa.selenium.interactions.Actions;
 
 import com.epam.transformer.MessageTransformer;
 
-public class TrashMessagesPage extends BasePage {
+public class TrashMessagesPage extends HomePage {
 
 	private static final String MORE_ACTION_BUTTON_XPATH = "//div[@gh='tm']/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]";
 	private static final String MOVE_TO_INBOX_XPATH = "//div[@class='SK AX']//div[@act='8']";
 	private static final String TRASH_MESSAGES_XPATH = "//div[@class='ae4 UI']/div[1]/div[1]/table/tbody/tr";
 
-	@Override
-	protected void initMessages() {
-		messageElements = MessageTransformer.fetchAll(driver.findElements(By.xpath(TRASH_MESSAGES_XPATH)));
-	}
+//	@Override
+//	protected void initMessages() {
+//		messageElements = MessageTransformer.fetchAll(driver.findElements(By.xpath(TRASH_MESSAGES_XPATH)));
+//	}
 
 	public void clickSendToInbox() {
 

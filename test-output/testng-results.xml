@@ -6,12 +6,12 @@
     <groups>
     </groups>
     <test name="Default test" duration-ms="429" started-at="2015-11-04T13:53:40Z" finished-at="2015-11-04T13:53:41Z">
-      <class name="com.epam.service.XLSTest">
-        <test-method status="PASS" signature="test()[pri:0, instance:com.epam.service.XLSTest@27f674d]" name="test" duration-ms="420" started-at="2015-11-04T15:53:40Z" finished-at="2015-11-04T15:53:41Z">
+      <class name="com.epam.businesslogic.XLSTest">
+        <test-method status="PASS" signature="test()[pri:0, instance:com.epam.businesslogic.XLSTest@27f674d]" name="test" duration-ms="420" started-at="2015-11-04T15:53:40Z" finished-at="2015-11-04T15:53:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test -->
-      </class> <!-- com.epam.service.XLSTest -->
+      </class> <!-- com.epam.businesslogicslogic.XLSTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

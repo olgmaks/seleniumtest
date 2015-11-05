@@ -10,7 +10,7 @@ System info: host: &#039;EPUALVIW1172&#039;, ip: &#039;10.25.10.228&#039;, os.na
 Driver info: org.openqa.selenium.firefox.FirefoxDriver
 Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=41.0.2, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
 Session ID: ac742342-42c5-480c-9df0-38d63ef1602c">
-      <![CDATA[org.openqa.selenium.StaleElementReferenceException: Element not found in the cache - perhaps the page has changed since it was looked up
+		<![CDATA[org.openqa.selenium.StaleElementReferenceException: Element not found in the cache - perhaps the page has changed since it was looked up
 Command duration or timeout: 1.06 seconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
 Build info: version: '2.48.2', revision: '41bccdd10cf2c0560f637404c2d96164b67d9d67', time: '2015-10-09 13:08:06'
@@ -30,10 +30,10 @@ Session ID: ac742342-42c5-480c-9df0-38d63ef1602c
 	at com.epam.transformer.MessageTransformer.fetchOne(MessageTransformer.java:35)
 	at com.epam.transformer.MessageTransformer.fetchAll(MessageTransformer.java:54)
 	at com.epam.page.TrashMessagesPage.initMessages(TrashMessagesPage.java:18)
-	at com.epam.page.BasePage.<init>(BasePage.java:41)
+	at com.epam.page.HomePage.<init>(BasePage.java:41)
 	at com.epam.page.TrashMessagesPage.<init>(TrashMessagesPage.java:10)
-	at com.epam.page.BasePage.openTrashMessagesPage(BasePage.java:66)
-	at com.epam.service.TrashMessagesService.<init>(TrashMessagesService.java:20)
+	at com.epam.page.HomePage.openTrashMessagesPage(BasePage.java:66)
+	at com.epam.businesslogic.TrashMessagesService.<init>(TrashMessagesService.java:20)
 	at com.epam.test.GmailTest.gmailTest(GmailTest.java:49)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
@@ -70,6 +70,6 @@ Driver info: driver.version: unknown
 	at <anonymous class>.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/OLEH_M~1/AppData/Local/Temp/anonymous4614716562735398038webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
 	at <anonymous class>.fxdriver.Timer.prototype.setTimeout/<.notify(file:///C:/Users/OLEH_M~1/AppData/Local/Temp/anonymous4614716562735398038webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:621)
 ]]>
-    </error>
+	</error>
   </testcase> <!-- gmailTest -->
 </testsuite> <!-- com.epam.test.GmailTest -->
