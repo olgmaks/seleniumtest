@@ -1,90 +1,74 @@
 package com.epam.page;
 
-import org.openqa.selenium.WebElement;
+import com.epam.control.element.CheckBox;
+import com.epam.control.element.Label;
+import com.epam.control.marker.Decorable;
+import com.epam.control.wraper.WebElementWrapper;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.FindBy;
 
-import com.epam.model.Message;
+import java.util.List;
 
 public class MessageElement {
-	
-	
-	private Message message;
-	
-	private WebElement indicatedCheckBox;
 
-	private WebElement importantCheckBox; 
-	
-	
-	public MessageElement() {
-		 
-	}
+    private static final String INDICATED_CHECK_BOX_CLASS_NAME = "oZ-jc";
+    private static final String IMPORTANT_CHECK_BOX_CLASS_NAME = "WA";
+    private static final String SUBJECT_LABEL_CLASS_NAME = "y6";
+    private static final String SENDER_LABEL_CLASS_NAME = "yX";
 
+    private Label subject;
 
-	public Message getMessage() {
-		return message;
-	}
+    private Label sender;
+
+    private CheckBox indicatedCheckBox;
+
+    private CheckBox importantCheckBox;
 
 
-	public void setMessage(Message message) {
-		this.message = message;
-	}
+    public MessageElement(Decorable tableRow) {
 
 
-	public WebElement getIndicatedCheckBox() {
-		return indicatedCheckBox;
-	}
+        if (tableRow instanceof WebElementWrapper) {
+
+            WebElementWrapper webElementWrapper = ((WebElementWrapper) tableRow);
+
+            subject = webElementWrapper.getChildLabel(By.className(SUBJECT_LABEL_CLASS_NAME));
+
+            sender = webElementWrapper.getChildLabel(By.className(SENDER_LABEL_CLASS_NAME));
+
+            indicatedCheckBox = webElementWrapper.getChildCheckBox(By.className(INDICATED_CHECK_BOX_CLASS_NAME));
+
+            importantCheckBox = webElementWrapper.getChildCheckBox(By.className(IMPORTANT_CHECK_BOX_CLASS_NAME));
+        }
 
 
-	public void setIndicatedCheckBox(WebElement indicatedCheckBox) {
-		this.indicatedCheckBox = indicatedCheckBox;
-	}
+    }
 
 
-	public WebElement getImportantCheckBox() {
-		return importantCheckBox;
-	}
+    public CheckBox getImportantCheckBox() {
+        return importantCheckBox;
+    }
+
+    public CheckBox getIndicatedCheckBox() {
+        return indicatedCheckBox;
+    }
+
+    public Label getSender() {
+        return sender;
+    }
+
+    public Label getSubject() {
+        return subject;
+    }
 
 
-	public void setImportantCheckBox(WebElement importantCheckBox) {
-		this.importantCheckBox = importantCheckBox;
-	}
-
-
-	@Override
-	public String toString() {
-		return "MessageItemFragment [message=" + message + ", indicatedCheckBox=" + indicatedCheckBox
-				+ ", importantCheckBox=" + importantCheckBox + "]";
-	}
-
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((message == null) ? 0 : message.hashCode());
-		return result;
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MessageElement other = (MessageElement) obj;
-		if (message == null) {
-			if (other.message != null)
-				return false;
-		} else if (!message.equals(other.message))
-			return false;
-		return true;
-	}
-
-
-	 
-	
-	
-
+    @Override
+    public String toString() {
+        return "MessageElement{" +
+                "subject=" + subject.getText() +
+                ", sender=" + sender.getText() +
+                ", indicatedCheckBox=" + indicatedCheckBox.isChecked() +
+                ", importantCheckBox=" + importantCheckBox.isChecked() +
+                '}';
+    }
 }

@@ -18,7 +18,6 @@ public class WebDriverUtils {
 
 	private WebDriverUtils() {
 	}
-
 	public static WebDriver getDriver() {
 		if (driver == null) {
 			synchronized (SYNC_ROOT) {

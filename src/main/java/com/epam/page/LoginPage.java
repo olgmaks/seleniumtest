@@ -1,35 +1,28 @@
 package com.epam.page;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import com.epam.control.element.Field;
 
-import com.epam.engine.WebDriverUtils;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPage extends Page {
 
-	private static final String USER_EMAIL_FIELD_ID = "Email";
-	
-	//Email field
+    private static final String USER_EMAIL_FIELD_ID = "Email";
 
-	@FindBy(id = USER_EMAIL_FIELD_ID)
-	private WebElement userEmailField;
+    //Email field
 
-	public LoginPage() {
-		PageFactory.initElements(WebDriverUtils.getDriver(), this);
-	}
-	
-	
-	public PasswordPage setEmailAndSubmit (String email) {
-		
-		if (userEmailField != null) {
-			userEmailField.sendKeys(email);
-			userEmailField.submit();
-		}
-		
-		return new PasswordPage();
-	}
-	
+    @FindBy(id = USER_EMAIL_FIELD_ID)
+    private Field userEmailField;
+
+
+    public PasswordPage setEmailAndSubmit(String email) {
+
+        if (userEmailField != null) {
+            userEmailField.setText(email);
+            userEmailField.submit();
+        }
+
+        return new PasswordPage();
+    }
+
 
 }

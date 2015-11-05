@@ -1,96 +1,165 @@
 package com.epam.page;
 
+import com.epam.control.element.Button;
+import com.epam.control.marker.Decorable;
 import com.epam.engine.WebDriverUtils;
 import com.epam.model.Message;
 import com.epam.transformer.MessageTransformer;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class HomePage {
+public class HomePage extends Page {
 
     private static final String DELETE_CHECKED_MESSAGES_BUTTON_XPATH = "//div[@gh='tm']//div[@act='10']";
     private static final String MORE_MENU_OPTIONS_BUTTON_XPATH = "//span[@class='ait']";
     private static final String IMPORTANT_MESSAGES_BUTTON_XPATH = "//div[@class='r9gPwb bQ']/div[3]/div[1]/div[1]/div[1]/div[1]";
-
-    protected WebDriver driver;
-
-
-    protected WebElement moreOptionsButton;
-    protected WebElement deleteCheckedButton;
-    protected WebElement trashMessagesButton;
-
-    protected List<MessageElement> messageElements;
+    private static final String MESSAGES_BOX_XPATH = "//div[@gh='tl']//tbody/tr";
 
 
-    protected HomePage() {
 
-        driver = WebDriverUtils.getDriver();
+    @FindBy(xpath = MORE_MENU_OPTIONS_BUTTON_XPATH)
+    protected Button moreOptionsButton;
 
-        By locator = By.xpath(MORE_MENU_OPTIONS_BUTTON_XPATH);
+    @FindBy(xpath = DELETE_CHECKED_MESSAGES_BUTTON_XPATH)
+    protected Button deleteCheckedButton;
 
-        WebDriverUtils.createWebDriverWait(5).until(ExpectedConditions.visibilityOfElementLocated(locator));
+    @FindBy(xpath = IMPORTANT_MESSAGES_BUTTON_XPATH)
+    protected Button importantMessagesButton;
 
-        moreOptionsButton = driver.findElement(locator);
+
+    @FindBy(xpath = MESSAGES_BOX_XPATH)
+    protected List<Decorable> messageTableRows;
 
 
-        messageElements = MessageTransformer.fetchAll(driver.findElements(By.xpath("//div[@gh='tl']//tbody/tr")));
-//        initMessages();
+    protected List<MessageElement> messagesElements;
 
+
+    public HomePage () {
+        messagesElements = MessageTransformer.transformTableRowsToPageObjectMessages(messageTableRows);
     }
 
-//    protected void initMessages() {
-
-//    }
 
     public void indicateMessageAsImportant(Integer index) {
-        messageElements.get(index).getImportantCheckBox().click();
+        messagesElements.get(index).getImportantCheckBox().check();
     }
 
+
     public void indicateMessageAsSelected(Integer index) {
-        messageElements.get(index).getIndicatedCheckBox().click();
+        messagesElements.get(index).getIndicatedCheckBox().check();
     }
+
 
     // Trash
     public TrashMessagesPage openTrashMessagesPage() {
 
         moreOptionsButton.click();
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) WebDriverUtils.getDriver();
         js.executeScript("document.getElementsByClassName('UKr6le')[8].click();");
 
         return new TrashMessagesPage();
     }
+
 
     // Important
     public ImportantMessagesPage openImportantMessagesPage() {
 
         moreOptionsButton.click();
 
-        WebElement importantMessagesButton = driver.findElement(By.xpath(IMPORTANT_MESSAGES_BUTTON_XPATH));
-
         importantMessagesButton.click();
 
         return new ImportantMessagesPage();
+
     }
+
 
     public void deleteCheckedMessages() {
 
-        deleteCheckedButton = driver.findElement(By.xpath(DELETE_CHECKED_MESSAGES_BUTTON_XPATH));
-
         deleteCheckedButton.click();
-    }
 
-    public List<MessageElement> getMessageElements() {
-        return messageElements;
     }
 
     public List<Message> getMessages() {
-
-        return MessageTransformer.getAllMessages(messageElements);
+        return MessageTransformer.transformPageObjectToModelMessages(messagesElements);
     }
+
+
+
+
+    public List<Message> indicateMessagesAsImportant(Integer... messagesIndexes) {
+
+        List<Message> indicatedMessages = new ArrayList<>();
+
+        List<Message> messages = getMessages();
+
+        for (Integer index : messagesIndexes) {
+
+            Message currentMessage = messages.get(index);
+
+            if (!currentMessage.isImportant()) {
+                indicateMessageAsImportant(index);
+            }
+
+            indicatedMessages.add(currentMessage);
+
+        }
+
+        return indicatedMessages;
+    }
+
+
+    public List<Message> indicateMessagesAsSelected(Integer... messagesIndexes) {
+
+        List<Message> selectedMessages = new ArrayList<>();
+
+        List<Message> messages = getMessages();
+
+        for (Integer index : messagesIndexes) {
+
+            Message currentMessage = messages.get(index);
+
+            if (!currentMessage.isSelected()) {
+                indicateMessageAsSelected(index);
+            }
+
+            selectedMessages.add(currentMessage);
+
+        }
+
+        return selectedMessages;
+    }
+
+
+    public List<Message> indicateMessagesAsSelected(List<Message> messagesToBeSelected) {
+
+        List<Message> messages = getMessages();
+
+        ArrayList<Integer> indexes = new ArrayList<>();
+
+        for (Message m : messagesToBeSelected) {
+            indexes.add(messages.indexOf(m));
+        }
+
+        return indicateMessagesAsSelected(indexes.toArray(new Integer[indexes.size()]));
+
+    }
+
+
+    public Boolean verifyMessagesPresence(List<Message> expectedMessages) {
+
+        if (expectedMessages == null || expectedMessages.isEmpty()) {
+            return false;
+        }
+
+        List<Message> messages = getMessages();
+
+        Boolean result = messages.containsAll(expectedMessages);
+
+        return result;
+    }
+
 }

@@ -1,11 +1,10 @@
 package com.epam.businesslogic;
 
-import org.apache.log4j.Logger;
-
 import com.epam.model.User;
 import com.epam.page.InboxMessagesPage;
 import com.epam.page.LoginPage;
 import com.epam.page.PasswordPage;
+import org.apache.log4j.Logger;
 
 public class LoginService {
 

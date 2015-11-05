@@ -3,6 +3,7 @@ package com.epam.transformer;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.epam.control.marker.Decorable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -11,66 +12,51 @@ import com.epam.page.MessageElement;
 
 public class MessageTransformer {
 
-	private static final String INDICATED_CHECK_BOX_CLASS_NAME = "oZ-jc";
 
-	private static final String IMPORTANT_CHECK_BOX_CLASS_NAME = "WA";
+    private MessageTransformer() {
 
-	private MessageTransformer() {
+    }
 
-	}
 
-	public static MessageElement fetchOne(WebElement message) {
 
-		MessageElement result = new MessageElement();
-		Message messageModel = new Message();
+    public static List<MessageElement> transformTableRowsToPageObjectMessages(List<Decorable> elements) {
+//		
+        if (elements == null) {
+            System.out.println(Message.class + "Message : " + "toMessages : elements = null");
+            return null;
+        }
 
-		result.setIndicatedCheckBox(message.findElement(By.className(INDICATED_CHECK_BOX_CLASS_NAME)));
+        List<MessageElement> results = new ArrayList<>();
 
-		result.setImportantCheckBox(message.findElement(By.className(IMPORTANT_CHECK_BOX_CLASS_NAME)));
+        for (Decorable element : elements) {
+            results.add(new MessageElement(element));
+        }
 
-		messageModel.setSender(message.findElement(By.className("yX")).getText());
 
-		messageModel.setSubject(message.findElement(By.className("xS")).findElement(By.className("y6")).getText());
-		
-		messageModel.setImportant(result.getImportantCheckBox().isSelected());
-		
-		messageModel.setIndicated(result.getIndicatedCheckBox().isSelected());
-		
-		result.setMessage(messageModel);
+        return results;
+    }
 
-		return result;
-	}
+    public static Message getOneMessage(MessageElement messageItemFragment) {
 
-	public static List<MessageElement> fetchAll(List<WebElement> elements) {
-		
-		if (elements == null) {
-			System.out.println(Message.class + "Message : " + "toMessages : elements = null");
-			return null;
-		}
+        Message message = new Message();
 
-		List<MessageElement> results = new ArrayList<>();
+        message.setImportant(messageItemFragment.getImportantCheckBox().isChecked());
+        message.setSelected(messageItemFragment.getIndicatedCheckBox().isChecked());
+        message.setSender(messageItemFragment.getSender().getText());
+        message.setSubject(messageItemFragment.getSubject().getText());
 
-		for (WebElement webElement : elements) {
-			MessageElement messageItemFragment = fetchOne(webElement);
-			results.add(messageItemFragment);
-		}
+        return message;
+    }
 
-		return results;
-	}
-	
-	public static Message getOneMessage (MessageElement messageItemFragment) {
-		return messageItemFragment.getMessage();
-	}
-	
-	public static List<Message> getAllMessages (List<MessageElement> messageItemFragments) {
-		
-		List<Message> result = new ArrayList<>();
-		
-		for (MessageElement messageItemFragment : messageItemFragments) {
-			result.add(getOneMessage(messageItemFragment));
-		}
-		
-		return result;
-	}
+    public static List<Message> transformPageObjectToModelMessages(List<MessageElement> messageItemFragments) {
+
+        List<Message> results = new ArrayList<>();
+
+        for (MessageElement me : messageItemFragments) {
+            results.add(getOneMessage(me));
+        }
+
+        return results;
+    }
 
 }

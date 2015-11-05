@@ -6,8 +6,9 @@
       <class name="com.epam.test.GmailTest">
         <methods>
           <include name="beforeClass"/>
-          <include name="gmailTest"/>
+          <include name="afterClass"/>
           <include name="afterTest"/>
+          <include name="testGmail"/>
         </methods>
       </class> <!-- com.epam.test.GmailTest -->
     </classes>
