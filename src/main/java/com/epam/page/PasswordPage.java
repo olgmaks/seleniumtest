@@ -2,9 +2,10 @@ package com.epam.page;
 
 import com.epam.control.element.Field;
 
+import com.epam.control.pagetools.PageTools;
 import org.openqa.selenium.support.FindBy;
 
-public class PasswordPage extends  Page{
+public class PasswordPage {
 
     private static final String USER_PASSWORD_FIELD_ID = "Passwd";
 
@@ -14,6 +15,9 @@ public class PasswordPage extends  Page{
     private Field passwordField;
 
 
+    public PasswordPage() {
+        PageTools.initPageElements(this);
+    }
 
     public InboxMessagesPage setPasswordAndSubmit(String password) {
 

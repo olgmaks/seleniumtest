@@ -1,12 +1,9 @@
 package com.epam.page;
 
 import com.epam.businesslogic.LoginService;
-import com.epam.control.marker.Decorable;
-import com.epam.engine.WebDriverUtils;
+import com.epam.control.engine.WebDriverUtils;
 import com.epam.testdata.Data;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 /**
  * Created by Oleh_Maksymuk on 11/5/2015.

@@ -14,7 +14,7 @@
         <test-method status="FAIL" signature="testGmail()[pri:0, instance:com.epam.test.GmailTest@307f6b8c]" name="testGmail" duration-ms="5" started-at="2015-11-05T15:33:33Z" finished-at="2015-11-05T15:33:33Z">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException
+                <![CDATA[java.lang.NullPointerException
 	at com.epam.businesslogic.MessagesService.openImportantMessagePage(MessagesService.java:47)
 	at com.epam.test.GmailTest.testGmail(GmailTest.java:41)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)

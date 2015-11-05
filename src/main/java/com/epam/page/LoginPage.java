@@ -2,9 +2,10 @@ package com.epam.page;
 
 import com.epam.control.element.Field;
 
+import com.epam.control.pagetools.PageTools;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends Page {
+public class LoginPage {
 
     private static final String USER_EMAIL_FIELD_ID = "Email";
 
@@ -13,6 +14,9 @@ public class LoginPage extends Page {
     @FindBy(id = USER_EMAIL_FIELD_ID)
     private Field userEmailField;
 
+    public LoginPage() {
+        PageTools.initPageElements(this);
+    }
 
     public PasswordPage setEmailAndSubmit(String email) {
 

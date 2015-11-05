@@ -2,7 +2,7 @@ package com.epam.test;
 
 import com.epam.businesslogic.LoginService;
 import com.epam.businesslogic.MessagesService;
-import com.epam.engine.WebDriverUtils;
+import com.epam.control.engine.WebDriverUtils;
 import com.epam.model.Message;
 import com.epam.model.User;
 import com.epam.testdata.Data;
@@ -58,6 +58,11 @@ public class GmailTest {
         // Verifying messages presence among trash messages
         assertTrue(messagesService.verifyMessagesPresenceAmongTrashMessages(trashMessages));
 
+        // Making trash unimportant
+        messagesService.makeAllTrashUnimportant();
+
+        // Moving Messages back to inbox
+        messagesService.moveAllTrashToInbox();
 
         LOG.info("Test has been passed");
     }
@@ -73,7 +78,7 @@ public class GmailTest {
     @AfterClass
     public static void afterClass() {
         // Stop browser driver
-//        WebDriverUtils.stop();
+        WebDriverUtils.stop();
         LOG.info("Browser has been stopped");
     }
 

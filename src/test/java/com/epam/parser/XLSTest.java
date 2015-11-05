@@ -1,4 +1,4 @@
-package com.epam.businesslogic;
+package com.epam.parser;
 
 import com.epam.model.User;
 import org.testng.Assert;

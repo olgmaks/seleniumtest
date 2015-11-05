@@ -6,7 +6,6 @@ import com.epam.page.InboxMessagesPage;
 import com.epam.page.TrashMessagesPage;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -67,6 +66,19 @@ public class MessagesService {
 
     public boolean verifyMessagesPresenceAmongTrashMessages (List<Message> messages) {
         return trashMessagesPage.verifyMessagesPresence(messages);
+    }
+
+
+    public void makeAllTrashUnimportant () {
+
+        for (int i = 0; i < trashMessagesPage.getMessages().size(); i++) {
+            trashMessagesPage.indicateMessageAsImportant(i);
+        }
+    }
+
+    public void moveAllTrashToInbox() {
+        trashMessagesPage.indicateMessagesAsSelected(trashMessagesPage.getMessages());
+        trashMessagesPage.clickSendToInbox();
     }
 
 

@@ -3,7 +3,7 @@
 <testsuite hostname="EPUALVIW1172" name="com.epam.test.GmailTest" tests="1" failures="0" timestamp="5 Nov 2015 13:33:33 GMT" time="0.005" errors="1">
   <testcase name="testGmail" time="0.005" classname="com.epam.test.GmailTest">
     <error type="java.lang.NullPointerException">
-      <![CDATA[java.lang.NullPointerException
+		<![CDATA[java.lang.NullPointerException
 	at com.epam.businesslogic.MessagesService.openImportantMessagePage(MessagesService.java:47)
 	at com.epam.test.GmailTest.testGmail(GmailTest.java:41)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -31,6 +31,6 @@
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
 ]]>
-    </error>
+	</error>
   </testcase> <!-- testGmail -->
 </testsuite> <!-- com.epam.test.GmailTest -->

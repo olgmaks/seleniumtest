@@ -1,24 +1,23 @@
 package com.epam.page;
 
 import com.epam.control.element.Button;
+import com.epam.control.engine.WebDriverUtils;
 import com.epam.control.marker.Decorable;
-import com.epam.engine.WebDriverUtils;
+import com.epam.control.pagetools.PageTools;
 import com.epam.model.Message;
 import com.epam.transformer.MessageTransformer;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomePage extends Page {
+public class HomePage {
 
     private static final String DELETE_CHECKED_MESSAGES_BUTTON_XPATH = "//div[@gh='tm']//div[@act='10']";
     private static final String MORE_MENU_OPTIONS_BUTTON_XPATH = "//span[@class='ait']";
     private static final String IMPORTANT_MESSAGES_BUTTON_XPATH = "//div[@class='r9gPwb bQ']/div[3]/div[1]/div[1]/div[1]/div[1]";
     private static final String MESSAGES_BOX_XPATH = "//div[@gh='tl']//tbody/tr";
-
 
 
     @FindBy(xpath = MORE_MENU_OPTIONS_BUTTON_XPATH)
@@ -38,7 +37,13 @@ public class HomePage extends Page {
     protected List<MessageElement> messagesElements;
 
 
-    public HomePage () {
+    public HomePage() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        PageTools.initPageElements(this);
         messagesElements = MessageTransformer.transformTableRowsToPageObjectMessages(messageTableRows);
     }
 
@@ -58,8 +63,7 @@ public class HomePage extends Page {
 
         moreOptionsButton.click();
 
-        JavascriptExecutor js = (JavascriptExecutor) WebDriverUtils.getDriver();
-        js.executeScript("document.getElementsByClassName('UKr6le')[8].click();");
+        PageTools.executeJS("document.getElementsByClassName('UKr6le')[8].click();");
 
         return new TrashMessagesPage();
     }
@@ -86,8 +90,6 @@ public class HomePage extends Page {
     public List<Message> getMessages() {
         return MessageTransformer.transformPageObjectToModelMessages(messagesElements);
     }
-
-
 
 
     public List<Message> indicateMessagesAsImportant(Integer... messagesIndexes) {
