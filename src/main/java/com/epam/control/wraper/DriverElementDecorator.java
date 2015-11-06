@@ -1,5 +1,7 @@
 package com.epam.control.wraper;
 
+import com.epam.control.elementfactory.ElementFactory;
+import com.epam.control.elementimpl.AbstractComponent;
 import com.epam.control.marker.Decorable;
 import com.epam.control.wraper.WebElementWrapper;
 import org.openqa.selenium.WebElement;
@@ -49,7 +51,11 @@ public class DriverElementDecorator extends DefaultFieldDecorator {
 
         if (Decorable.class.isAssignableFrom(field.getType())) {
 
-            return new WebElementWrapper(proxyForLocator(loader, locator));
+            AbstractComponent abstractComponent = ElementFactory.getElement(field.getType(),proxyForLocator(loader, locator));
+
+//            return new WebElementWrapper(proxyForLocator(loader, locator));
+
+            return abstractComponent;
 
         } else if (List.class.isAssignableFrom(field.getType())) {
 
@@ -69,7 +75,7 @@ public class DriverElementDecorator extends DefaultFieldDecorator {
     @Override
     protected boolean isDecoratableList(Field field) {
 
-//        System.out.println("isDecoratableList(Field field) : " + field);
+//        System.out.println("isDecoratableList(TextField field) : " + field);
 
         if (!List.class.isAssignableFrom(field.getType())) {
             return false;

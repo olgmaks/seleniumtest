@@ -1,7 +1,6 @@
 package com.epam.page;
 
-import com.epam.control.element.Field;
-
+import com.epam.control.element.TextField;
 import com.epam.control.pagetools.PageTools;
 import org.openqa.selenium.support.FindBy;
 
@@ -12,7 +11,7 @@ public class PasswordPage {
     //Password field
 
     @FindBy(id = USER_PASSWORD_FIELD_ID)
-    private Field passwordField;
+    private TextField passwordTextField;
 
 
     public PasswordPage() {
@@ -21,9 +20,9 @@ public class PasswordPage {
 
     public InboxMessagesPage setPasswordAndSubmit(String password) {
 
-        if (passwordField != null) {
-            passwordField.setText(password);
-            passwordField.submit();
+        if (passwordTextField != null) {
+            passwordTextField.setText(password);
+            passwordTextField.submit();
         }
 
         return new InboxMessagesPage();

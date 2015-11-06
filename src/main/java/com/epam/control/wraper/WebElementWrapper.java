@@ -2,7 +2,7 @@ package com.epam.control.wraper;
 
 import com.epam.control.element.Button;
 import com.epam.control.element.CheckBox;
-import com.epam.control.element.Field;
+import com.epam.control.element.TextField;
 import com.epam.control.element.Label;
 import com.epam.control.marker.Decorable;
 import org.openqa.selenium.By;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by Oleh_Maksymuk on 11/5/2015.
  */
-public class WebElementWrapper implements CheckBox, Field, Label, Button {
+public class WebElementWrapper implements CheckBox, TextField, Label, Button {
 
     private WebElement element;
 
@@ -54,7 +54,6 @@ public class WebElementWrapper implements CheckBox, Field, Label, Button {
         return element;
     }
 
-
     public CheckBox getChildCheckBox(By by) {
         return (CheckBox) findChild(by);
     }
@@ -63,8 +62,8 @@ public class WebElementWrapper implements CheckBox, Field, Label, Button {
         return (Label) findChild(by);
     }
 
-    public Field getChildField(By by) {
-        return (Field) findChild(by);
+    public TextField getChildField(By by) {
+        return (TextField) findChild(by);
     }
 
     public Button getChildButton(By by) {

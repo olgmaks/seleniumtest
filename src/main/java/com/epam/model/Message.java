@@ -2,10 +2,6 @@ package com.epam.model;
 
 public class Message {
 
-    private boolean isSelected;
-
-    private boolean isImportant;
-
     private String sender;
 
     private String subject;
@@ -13,23 +9,6 @@ public class Message {
 
     public Message() {
 
-    }
-
-
-    public boolean isSelected() {
-        return isSelected;
-    }
-
-    public void setSelected(boolean isIndicated) {
-        this.isSelected = isIndicated;
-    }
-
-    public boolean isImportant() {
-        return isImportant;
-    }
-
-    public void setImportant(boolean isImportant) {
-        this.isImportant = isImportant;
     }
 
     public String getSender() {
@@ -71,9 +50,7 @@ public class Message {
     @Override
     public String toString() {
         return "Message{" +
-                "isSelected=" + isSelected +
-                ", isImportant=" + isImportant +
-                ", sender='" + sender + '\'' +
+                " sender='" + sender + '\'' +
                 ", subject='" + subject + '\'' +
                 '}';
     }

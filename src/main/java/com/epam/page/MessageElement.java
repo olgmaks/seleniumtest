@@ -5,9 +5,6 @@ import com.epam.control.element.Label;
 import com.epam.control.marker.Decorable;
 import com.epam.control.wraper.WebElementWrapper;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public class MessageElement {
 

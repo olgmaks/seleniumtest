@@ -1,26 +1,21 @@
 package com.epam.testdata;
 
 import com.epam.model.User;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import com.epam.testdata.xlsparser.XLSParser;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.Properties;
 
 public class Data {
 
     public static final String URL = "https://accounts.google.com/ServiceLogin?sacu=1&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&hl=uk&businesslogic=mail#identifier";
 
-    private static final String PATH_TO_PROPERTIES = "src/main/resources/testdata.properties";
+    public static final String PATH_TO_PROPERTIES = "src/main/resources/testdata.properties";
 
-    private static final String PATH_TO_EXCEL_FILE = "src/main/resources/userData.xlsx";
+    public static final String PATH_TO_EXCEL_FILE = "src/main/resources/userData.xlsx";
+
 
     private static User defaultUser = null;
 
@@ -35,8 +30,8 @@ public class Data {
                 Properties property = new Properties();
                 property.load(fis);
 
-                String userName = property.getProperty("email");
-                String password = property.getProperty("password");
+                String userName = property.getProperty("userEmail");
+                String password = property.getProperty("userPassword");
 
                 defaultUser = new User(userName, password);
 
@@ -52,46 +47,9 @@ public class Data {
 
     public static User getUserDataExсel() {
 
-        User user = new User(null, null);
+        XLSParser<User> userXLSParser = new XLSParser<>(User.class, PATH_TO_EXCEL_FILE);
 
-        FileInputStream fis = null;
-
-        try {
-
-            fis = new FileInputStream(PATH_TO_EXCEL_FILE);
-
-            Workbook workbook = new XSSFWorkbook(fis);
-
-            Sheet sheet = workbook.getSheetAt(0);
-            Iterator<Row> rowIterator = sheet.iterator();
-
-            while (rowIterator.hasNext()) {
-
-                Row row = rowIterator.next();
-                Iterator<Cell> cellIterator = row.cellIterator();
-
-                while (cellIterator.hasNext()) {
-
-                    Cell cell = cellIterator.next();
-
-                    if (cell.getStringCellValue().equals("userEmail")) {
-                        cell = cellIterator.next();
-                        user.setEmail(cell.getStringCellValue());
-                    } else if (cell.getStringCellValue().equals("userPassword")) {
-                        cell = cellIterator.next();
-                        user.setPassword(cell.getStringCellValue());
-                    }
-                }
-            }
-
-            fis.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return user;
+        return userXLSParser.getAll().get(0);
 
     }
 

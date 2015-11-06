@@ -3,6 +3,7 @@ package com.epam.test;
 import com.epam.businesslogic.LoginService;
 import com.epam.businesslogic.MessagesService;
 import com.epam.control.engine.WebDriverUtils;
+import com.epam.control.pagetools.PageTools;
 import com.epam.model.Message;
 import com.epam.model.User;
 import com.epam.testdata.Data;
@@ -11,7 +12,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import  static  org.testng.Assert.*;
+
+import static org.testng.Assert.*;
 
 import java.util.List;
 
@@ -21,15 +23,15 @@ public class GmailTest {
 
     @BeforeClass
     public static void beforeClass() {
-        // Start browser driver
-        WebDriverUtils.load(Data.URL);
-        LOG.info("Browser started with URL = " + Data.URL);
+        LOG.info("GmailTest test SUITE started");
     }
 
     @Test
     public void testGmail() {
 
-        User user = Data.getDefaultUser();
+        LOG.info("Test execution has been started ...");
+
+        User user = Data.getUserDataExсel();
 
         // Login business logic object
         LoginService loginService = new LoginService(user);
@@ -70,16 +72,13 @@ public class GmailTest {
     @AfterMethod
     public void afterTest() {
 
-
-        LOG.info("System has been returned to pre-contition state");
-
     }
 
     @AfterClass
     public static void afterClass() {
         // Stop browser driver
-        WebDriverUtils.stop();
-        LOG.info("Browser has been stopped");
+        LOG.info("GmailTest test SUITE executed");
+        PageTools.closeBrowser();
     }
 
 }

@@ -1,10 +1,17 @@
 package com.epam.model;
 
+import com.epam.testdata.xlsparser.KeyLabel;
+
 public class User {
 
+
+	@KeyLabel("userEmail")
 	private String email;
 
+	@KeyLabel("userPassword")
 	private String password;
+
+	public User () {}
 
 	public User(String email, String password) {
 		super();

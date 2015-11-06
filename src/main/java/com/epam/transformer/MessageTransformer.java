@@ -1,14 +1,11 @@
 package com.epam.transformer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.epam.control.marker.Decorable;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 import com.epam.model.Message;
 import com.epam.page.MessageElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MessageTransformer {
 
@@ -40,8 +37,6 @@ public class MessageTransformer {
 
         Message message = new Message();
 
-        message.setImportant(messageItemFragment.getImportantCheckBox().isChecked());
-        message.setSelected(messageItemFragment.getIndicatedCheckBox().isChecked());
         message.setSender(messageItemFragment.getSender().getText());
         message.setSubject(messageItemFragment.getSubject().getText());
 
