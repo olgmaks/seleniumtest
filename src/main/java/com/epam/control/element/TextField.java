@@ -7,7 +7,7 @@ import com.epam.control.marker.Decorable;
 /**
  * Created by Oleh_Maksymuk on 11/5/2015.
  */
-public interface Field extends Decorable, Fillable, Submitable {
+public interface TextField extends Decorable, Fillable, Submitable {
 
 
 }
