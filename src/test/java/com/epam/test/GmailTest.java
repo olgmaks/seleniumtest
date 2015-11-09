@@ -7,14 +7,13 @@ import com.epam.control.pagetools.PageTools;
 import com.epam.model.Message;
 import com.epam.model.User;
 import com.epam.testdata.Data;
+import com.epam.testdata.xlsparser.XLSParser;
 import org.apache.log4j.Logger;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import static org.testng.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GmailTest {
@@ -26,12 +25,28 @@ public class GmailTest {
         LOG.info("GmailTest test SUITE started");
     }
 
-    @Test
-    public void testGmail() {
+    @DataProvider (parallel = true)
+    public Object [][] provide () {
+
+        XLSParser<User> parser = new XLSParser<>(User.class, Data.PATH_TO_EXCEL_FILE);
+
+        ArrayList<User> users = (ArrayList<User>) parser.getAll();
+
+        User user1 = users.get(0);
+
+        User user2 = users.get(1);
+
+        return new Object[][]{{user1},{user2}};
+    }
+
+    @Test(threadPoolSize = 5, dataProvider = "provide")
+    public void testGmail(User user) {
+
+        System.out.println("Thread.currentThread().getId() -> "+Thread.currentThread().getId());
 
         LOG.info("Test execution has been started ...");
 
-        User user = Data.getUserDataExсel();
+//        User user = Data.getUserDataExсel();
 
         // Login business logic object
         LoginService loginService = new LoginService(user);

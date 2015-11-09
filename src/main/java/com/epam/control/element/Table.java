@@ -1,8 +1,5 @@
 package com.epam.control.element;
 
-import com.epam.control.elementimpl.TableImpl;
-import com.epam.control.marker.Decorable;
-
 import java.util.List;
 
 /**
@@ -19,10 +16,6 @@ public interface Table {
 
     Object getElement(int row, int column);
 
-    TableImpl.Row getRow(int row);
-
-
-    List<TableImpl.Row> getAllRows();
 
 
 }
