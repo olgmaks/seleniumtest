@@ -90,9 +90,9 @@ public class DriverElementDecorator extends DefaultFieldDecorator {
 
         Type listType = ((ParameterizedType) genericType).getActualTypeArguments()[0];
 
-        if (!Decorable.class.equals(listType)) {
-            return false;
-        }
+//        if (!Decorable.class.equals(listType)) {
+//            return false;
+//        }
 
         if (field.getAnnotation(FindBy.class) == null &&
                 field.getAnnotation(FindBys.class) == null &&

@@ -19,7 +19,7 @@ public class WebDriverUtils {
      */
 
     private static WebDriver driver;
-    private static final long IMPLICITLY_WAIT_TIMEOUT = 1;
+    private static final long IMPLICITLY_WAIT_TIMEOUT = 30;
     private static final Object SYNC_ROOT = new Object();
 
     private WebDriverUtils() {
