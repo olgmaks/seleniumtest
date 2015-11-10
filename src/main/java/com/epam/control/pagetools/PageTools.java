@@ -14,6 +14,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class PageTools {
 
+    private static final long INTERVAL_BETWEEN_TIMEOUT_IN_MILLISECONDS = 1000;
+    private static final long TIMEOUT_IN_SECONDS = 30;
+
 
     public static void initPageElements(Object page) {
 
@@ -29,12 +32,16 @@ public class PageTools {
     }
 
     private static void waitForAll(By by) {
-        new WebDriverWait(WebDriverUtils.getDriver(),10,1000).until(
+        new WebDriverWait(WebDriverUtils.getDriver(),
+                TIMEOUT_IN_SECONDS,
+                INTERVAL_BETWEEN_TIMEOUT_IN_MILLISECONDS).until(
                 ExpectedConditions.presenceOfAllElementsLocatedBy(by));
     }
 
     private static void waitForOne (By by) {
-        new WebDriverWait(WebDriverUtils.getDriver(),10,1000).until(
+        new WebDriverWait(WebDriverUtils.getDriver(),
+                TIMEOUT_IN_SECONDS,
+                INTERVAL_BETWEEN_TIMEOUT_IN_MILLISECONDS).until(
                 ExpectedConditions.presenceOfElementLocated(by));
     }
 

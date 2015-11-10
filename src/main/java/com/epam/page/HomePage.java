@@ -14,7 +14,7 @@ public class HomePage {
 
     protected static final String DELETE_CHECKED_MESSAGES_BUTTON_XPATH = "//div[@gh='tm']//div[@act='10']";
     protected static final String MORE_MENU_OPTIONS_BUTTON_XPATH = "//span[@class='ait']";
-    protected static final String IMPORTANT_MESSAGES_BUTTON_XPATH = "//div[@class='r9gPwb bQ']/div[3]/div[1]/div[1]/div[1]/div[1]";
+    protected static final String IMPORTANT_MESSAGES_BUTTON_XPATH = "//div[@role='navigation']/div/div[3]//div[@class='LrBjie']/div/div[1]";
     protected static final String MESSAGES_BOX_XPATH = "//div[@gh='tl']//tbody/tr";
 
 
@@ -77,6 +77,7 @@ public class HomePage {
 
     // Important
     public ImportantMessagesPage openImportantMessagesPage() {
+
 
         moreOptionsButton.click();
 
@@ -166,6 +167,11 @@ public class HomePage {
         List<Message> messages = getMessages();
 
         Boolean result = messages.containsAll(expectedMessages);
+
+        if (!result) {
+            System.out.println("Expected : " + expectedMessages);
+            System.out.println("Found : " + messages);
+        }
 
         return result;
     }

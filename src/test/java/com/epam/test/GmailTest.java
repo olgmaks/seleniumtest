@@ -14,6 +14,7 @@ import org.testng.annotations.*;
 import static org.testng.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GmailTest {
@@ -25,24 +26,33 @@ public class GmailTest {
         LOG.info("GmailTest test SUITE started");
     }
 
-    @DataProvider (parallel = true)
-    public Object [][] provide () {
+    @DataProvider(parallel = true)
+    public Object[][] provide() {
 
         XLSParser<User> parser = new XLSParser<>(User.class, Data.PATH_TO_EXCEL_FILE);
 
         ArrayList<User> users = (ArrayList<User>) parser.getAll();
 
-        User user1 = users.get(0);
+        System.out.println(users);
 
-        User user2 = users.get(1);
+        System.out.println(users.size());
 
-        return new Object[][]{{user1},{user2}};
+
+        Object[][] usersData = new Object[users.size()][1];
+
+        for (int i = 0; i < users.size(); i++) {
+            usersData[i][0] = users.get(i);
+        }
+
+        System.out.println(Arrays.toString(usersData));
+
+        return usersData;
     }
 
     @Test(threadPoolSize = 5, dataProvider = "provide")
-    public void testGmail(User user) {
+    public void testGmail(User user) throws InterruptedException {
 
-        System.out.println("Thread.currentThread().getId() -> "+Thread.currentThread().getId());
+        System.out.println("Thread.currentThread().getId() -> " + Thread.currentThread().getId());
 
         LOG.info("Test execution has been started ...");
 
@@ -81,6 +91,7 @@ public class GmailTest {
         // Moving Messages back to inbox
         messagesService.moveAllTrashToInbox();
 
+        PageTools.closeBrowser();
         LOG.info("Test has been passed");
     }
 
@@ -93,7 +104,7 @@ public class GmailTest {
     public static void afterClass() {
         // Stop browser driver
         LOG.info("GmailTest test SUITE executed");
-        PageTools.closeBrowser();
+//
     }
 
 }
