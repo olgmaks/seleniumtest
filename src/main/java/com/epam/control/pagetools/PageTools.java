@@ -31,30 +31,47 @@ public class PageTools {
         js.executeScript(script);
     }
 
-    private static void waitForAll(By by) {
-        new WebDriverWait(WebDriverUtils.getDriver(),
-                TIMEOUT_IN_SECONDS,
-                INTERVAL_BETWEEN_TIMEOUT_IN_MILLISECONDS).until(
-                ExpectedConditions.presenceOfAllElementsLocatedBy(by));
-    }
 
-    private static void waitForOne (By by) {
-        new WebDriverWait(WebDriverUtils.getDriver(),
-                TIMEOUT_IN_SECONDS,
-                INTERVAL_BETWEEN_TIMEOUT_IN_MILLISECONDS).until(
-                ExpectedConditions.presenceOfElementLocated(by));
-    }
 
-    public static void waitForElementByXpath (String xpath) {
-        waitForAll(By.xpath(xpath));
-    }
-
-    public static void waitForElementsByXpath (String xpath) {
-        waitForAll(By.xpath(xpath));
-    }
-
+//
+//    private static void waitForAll(By by) {
+//
+//        new WebDriverWait(WebDriverUtils.getDriver(),
+//                TIMEOUT_IN_SECONDS,
+//                INTERVAL_BETWEEN_TIMEOUT_IN_MILLISECONDS).until(
+//                ExpectedConditions.presenceOfAllElementsLocatedBy(by));
+//
+//    }
+//
+//    private static void waitForOne (By by) {
+//
+//        new WebDriverWait(WebDriverUtils.getDriver(),
+//                TIMEOUT_IN_SECONDS,
+//                INTERVAL_BETWEEN_TIMEOUT_IN_MILLISECONDS).until(
+//                ExpectedConditions.presenceOfElementLocated(by));
+//
+//    }
+//
+//    public static void waitForElementByXpath (String xpath) {
+//        waitForAll(By.xpath(xpath));
+//    }
+//
+//    public static void waitForElementsByXpath (String xpath) {
+//        waitForAll(By.xpath(xpath));
+//    }
+//
     public static void closeBrowser () {
         WebDriverUtils.stop();
+    }
+
+
+    public static class WaitForElementsByXpath {
+        public WaitForElementsByXpath (String xpath) {
+            new WebDriverWait(WebDriverUtils.getDriver(),
+                    TIMEOUT_IN_SECONDS,
+                    INTERVAL_BETWEEN_TIMEOUT_IN_MILLISECONDS).until(
+                    ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpath)));
+        }
     }
 
 }

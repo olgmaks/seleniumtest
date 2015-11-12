@@ -6,17 +6,17 @@
     <groups>
     </groups>
     <test name="Default test" duration-ms="5459" started-at="2015-11-05T13:33:28Z" finished-at="2015-11-05T13:33:33Z">
-      <class name="com.epam.test.GmailTest">
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.epam.test.GmailTest@307f6b8c]" name="beforeClass" is-config="true" duration-ms="5068" started-at="2015-11-05T15:33:28Z" finished-at="2015-11-05T15:33:33Z">
+      <class name="com.epam.gmailtest.GmailTest">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.epam.gmailtest.GmailTest@307f6b8c]" name="beforeClass" is-config="true" duration-ms="5068" started-at="2015-11-05T15:33:28Z" finished-at="2015-11-05T15:33:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="FAIL" signature="testGmail()[pri:0, instance:com.epam.test.GmailTest@307f6b8c]" name="testGmail" duration-ms="5" started-at="2015-11-05T15:33:33Z" finished-at="2015-11-05T15:33:33Z">
+        <test-method status="FAIL" signature="testGmail()[pri:0, instance:com.epam.gmailtest.GmailTest@307f6b8c]" name="testGmail" duration-ms="5" started-at="2015-11-05T15:33:33Z" finished-at="2015-11-05T15:33:33Z">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
-                <![CDATA[java.lang.NullPointerException
+              <![CDATA[java.lang.NullPointerException
 	at com.epam.businesslogic.MessagesService.openImportantMessagePage(MessagesService.java:47)
-	at com.epam.test.GmailTest.testGmail(GmailTest.java:41)
+	at com.epam.gmailtest.GmailTest.testGmail(GmailTest.java:41)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -47,11 +47,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGmail -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:com.epam.test.GmailTest@307f6b8c]" name="afterTest" is-config="true" duration-ms="0" started-at="2015-11-05T15:33:33Z" finished-at="2015-11-05T15:33:33Z">
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:com.epam.gmailtest.GmailTest@307f6b8c]" name="afterTest" is-config="true" duration-ms="0" started-at="2015-11-05T15:33:33Z" finished-at="2015-11-05T15:33:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.epam.test.GmailTest@307f6b8c]" name="afterClass" is-config="true" duration-ms="374" started-at="2015-11-05T15:33:33Z" finished-at="2015-11-05T15:33:33Z">
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.epam.gmailtest.GmailTest@307f6b8c]" name="afterClass" is-config="true" duration-ms="374" started-at="2015-11-05T15:33:33Z" finished-at="2015-11-05T15:33:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->

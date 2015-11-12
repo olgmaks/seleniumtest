@@ -10,6 +10,6 @@ public class InboxMessagesPage extends HomePage {
 
     @Override
     protected void waitBeforeInit() {
-        PageTools.waitForElementByXpath(MESSAGES_BOX_XPATH);
+        new PageTools.WaitForElementsByXpath(MESSAGES_BOX_XPATH);
     }
 }

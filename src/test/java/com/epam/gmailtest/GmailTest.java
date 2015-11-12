@@ -1,8 +1,7 @@
-package com.epam.test;
+package com.epam.gmailtest;
 
 import com.epam.businesslogic.LoginService;
 import com.epam.businesslogic.MessagesService;
-import com.epam.control.engine.WebDriverUtils;
 import com.epam.control.pagetools.PageTools;
 import com.epam.model.Message;
 import com.epam.model.User;
@@ -25,6 +24,7 @@ public class GmailTest {
     public static void beforeClass() {
         LOG.info("GmailTest test SUITE started");
     }
+
 
     @DataProvider(parallel = true)
     public Object[][] provide() {
@@ -92,11 +92,12 @@ public class GmailTest {
         messagesService.moveAllTrashToInbox();
 
         PageTools.closeBrowser();
-        LOG.info("Test has been passed");
     }
 
     @AfterMethod
     public void afterTest() {
+
+        LOG.info("Test has been passed");
 
     }
 

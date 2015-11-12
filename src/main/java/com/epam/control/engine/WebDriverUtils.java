@@ -2,14 +2,11 @@ package com.epam.control.engine;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
-import com.epam.page.LoginPage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebDriverUtils {
 
@@ -32,13 +29,10 @@ public class WebDriverUtils {
 
     private static final long IMPLICITLY_WAIT_TIMEOUT = 30;
 
-    private static final Object SYNC_ROOT = new Object();
-    private static final Object SYNC_ROOT_TWO = new Object();
-    private static final Object SYNC_ROOT_TREE = new Object();
-
+    private static final Object SYNC_CREATE_DRIVER = new Object();
+    private static final Object SYNC_GET_DRIVER = new Object();
 
     static {
-
         // Pool init
         pool = new HashMap<>();
     }
@@ -52,7 +46,7 @@ public class WebDriverUtils {
 
         WebDriver driver = null;
 
-        synchronized (SYNC_ROOT_TWO) {
+        synchronized (SYNC_GET_DRIVER) {
 
             driver = pool.get(Thread.currentThread().getId());
 
@@ -63,18 +57,17 @@ public class WebDriverUtils {
         }
 
 
-        synchronized (SYNC_ROOT) {
+        synchronized (SYNC_CREATE_DRIVER) {
 
             if (activeBrowsersCount >= 5) {
 
                 try {
-                    SYNC_ROOT.wait();
+                    SYNC_CREATE_DRIVER.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
             }
-
 
             driver = new FirefoxDriver();
 
@@ -99,7 +92,7 @@ public class WebDriverUtils {
 
     public static void stop() {
 
-        synchronized (SYNC_ROOT) {
+        synchronized (SYNC_CREATE_DRIVER) {
 
             WebDriver driver = null;
 
@@ -111,11 +104,11 @@ public class WebDriverUtils {
                 driver.quit();
             }
 
-            SYNC_ROOT.notify();
-
             activeBrowsersCount--;
 
             driver = null;
+
+            SYNC_CREATE_DRIVER.notify();
         }
 
         LOG.info("Browser has been stopped.");

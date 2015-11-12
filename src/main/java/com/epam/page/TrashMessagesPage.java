@@ -35,6 +35,6 @@ public class TrashMessagesPage extends HomePage {
 
     @Override
     protected void waitBeforeInit() {
-        PageTools.waitForElementsByXpath(TRASH_MESSAGE_IDENTIFICATOR_XPATH);
+        new PageTools.WaitForElementsByXpath(TRASH_MESSAGE_IDENTIFICATOR_XPATH);
     }
 }

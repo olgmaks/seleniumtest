@@ -7,11 +7,11 @@ public class ImportantMessagesPage extends HomePage {
 
     public static final String IMPORTANT_MESSAGES_IDENTIFICATOR_XPATH = "//div[@gh='tl']//tbody/tr//div[@class='av']";
 
-    public ImportantMessagesPage () {
+    public ImportantMessagesPage() {
     }
 
     @Override
     protected void waitBeforeInit() {
-        PageTools.waitForElementsByXpath(IMPORTANT_MESSAGES_IDENTIFICATOR_XPATH);
+        new PageTools.WaitForElementsByXpath(IMPORTANT_MESSAGES_IDENTIFICATOR_XPATH);
     }
 }
