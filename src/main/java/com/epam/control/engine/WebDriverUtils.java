@@ -1,15 +1,18 @@
 package com.epam.control.engine;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 public class WebDriverUtils {
 
+//    private static SelendroidLauncher selendroidServer;
 
     // Driver pool
 
@@ -35,6 +38,12 @@ public class WebDriverUtils {
     static {
         // Pool init
         pool = new HashMap<>();
+
+//        SelendroidConfiguration config = new SelendroidConfiguration();
+//        config.addSupportedApp("src/main/resources/selendroid-test-app-0.17.0.apk");
+//        selendroidServer = new SelendroidLauncher(config);
+//        selendroidServer.stopSelendroid();
+//        selendroidServer.launchSelendroid();
     }
 
     private WebDriverUtils() {
@@ -71,6 +80,15 @@ public class WebDriverUtils {
 
             driver = new FirefoxDriver();
 
+
+//            DesiredCapabilities caps = SelendroidCapabilities.android();
+
+//            try {
+//                driver = new SelendroidDriver(caps);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+
             driver.manage()
                     .timeouts()
                     .implicitlyWait(getImplicitlyWaitTimeout(),
@@ -94,21 +112,26 @@ public class WebDriverUtils {
 
         synchronized (SYNC_CREATE_DRIVER) {
 
-            WebDriver driver = null;
+            try {
 
-            driver = getDriver();
+                WebDriver driver = null;
 
-            pool.remove(Thread.currentThread().getId());
+                driver = getDriver();
 
-            if (driver != null) {
-                driver.quit();
+                pool.remove(Thread.currentThread().getId());
+
+                if (driver != null) {
+                    driver.quit();
+                }
+
+                activeBrowsersCount--;
+
+                driver = null;
+
+            } finally {
+                SYNC_CREATE_DRIVER.notify();
             }
 
-            activeBrowsersCount--;
-
-            driver = null;
-
-            SYNC_CREATE_DRIVER.notify();
         }
 
         LOG.info("Browser has been stopped.");

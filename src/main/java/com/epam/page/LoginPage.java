@@ -19,6 +19,7 @@ public class LoginPage {
 
         // Start browser driver
         WebDriverUtils.load(Data.URL);
+//        WebDriverUtils.load("http://google.com.ua");
 
         PageTools.initPageElements(this);
     }

@@ -26,7 +26,7 @@ public class GmailTest {
     }
 
 
-    @DataProvider(parallel = true)
+    @DataProvider(parallel = false)
     public Object[][] provide() {
 
         XLSParser<User> parser = new XLSParser<>(User.class, Data.PATH_TO_EXCEL_FILE);
@@ -38,11 +38,15 @@ public class GmailTest {
         System.out.println(users.size());
 
 
-        Object[][] usersData = new Object[users.size()][1];
+//        Object[][] usersData = new Object[users.size()][1];
 
-        for (int i = 0; i < users.size(); i++) {
-            usersData[i][0] = users.get(i);
-        }
+        Object[][] usersData = new Object[1][1];
+
+//        for (int i = 0; i < users.size(); i++) {
+//            usersData[i][0] = users.get(i);
+//        }
+
+        usersData[0][0] = users.get(0);
 
         System.out.println(Arrays.toString(usersData));
 

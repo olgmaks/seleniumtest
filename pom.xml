@@ -12,6 +12,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<selendroid.version>0.15.0</selendroid.version>
 	</properties>
 
 	<dependencies>
@@ -36,8 +37,16 @@
 			<version>4.12</version>
 		</dependency>
 
-
-
+		<!--<dependency>-->
+			<!--<groupId>io.selendroid</groupId>-->
+			<!--<version>${selendroid.version}</version>-->
+			<!--<artifactId>selendroid-standalone</artifactId>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>io.selendroid</groupId>-->
+			<!--<version>${selendroid.version}</version>-->
+			<!--<artifactId>selendroid-client</artifactId>-->
+		<!--</dependency>-->
 
 		<dependency>
 			<groupId>log4j</groupId>
